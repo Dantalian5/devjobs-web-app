@@ -1,0 +1,19 @@
+.main-container {
+	width: 100%;
+	min-height: 100svh;
+	font-family: var(--ff-kumbh);
+}
+.l-header {
+	padding-inline: 1.5rem;
+	padding-block: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.l-jobs {
+	padding-inline: 1.5rem;
+}
+img {
+	width: 100%;
+	max-width: 100%;
+}

@@ -1,0 +1,20 @@
+@use "modules/theme-toggler";
+
+.m-header-bkg {
+	position: relative;
+	&::after {
+		position: absolute;
+		content: "";
+		inset: 0 0 -2.5rem 0;
+		background: red;
+		z-index: -1;
+
+		background-image: url(/public/assets/mobile/bg-pattern-header.svg);
+		background-color: #5964e0;
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+	}
+}
+.m-logo {
+	width: 7.1875rem;
+}
