@@ -1,7 +1,8 @@
 .main-container {
 	width: 100%;
 	min-height: 100svh;
-	font-family: var(--ff-kumbh);
+	background: #f4f6f8;
+	position: relative;
 }
 .l-header {
 	padding-inline: 1.5rem;
@@ -9,9 +10,15 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	position: relative;
 }
 .l-jobs {
 	padding-inline: 1.5rem;
+}
+.l-jobs-wrapper {
+	display: grid;
+	gap: 1.5rem;
+	margin-bottom: 2rem;
 }
 img {
 	width: 100%;

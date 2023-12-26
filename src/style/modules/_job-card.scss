@@ -1,0 +1,45 @@
+.m-job-card {
+	padding-inline: 2rem;
+	padding-block: 0rem 2rem;
+	position: relative;
+	& > * {
+		position: relative;
+		z-index: 1;
+	}
+	&__logo {
+		width: 3.125rem;
+		height: 3.125rem;
+		border-radius: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 1.5rem;
+	}
+	&__logo-img {
+		max-width: 80%;
+		width: auto;
+	}
+	&__point {
+		margin-inline: 0.5rem;
+	}
+	&__info {
+		color: var(--c-dark-grey);
+	}
+	&__title {
+		color: var(--c-very-dark-blue);
+		margin-block: 1rem;
+	}
+	&__location {
+		color: var(--c-violet);
+		margin-top: 2.75rem;
+	}
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 1.5625rem 0 0 0;
+		background-color: red;
+		border-radius: 6px;
+		background: var(--c-white);
+		z-index: 0;
+	}
+}

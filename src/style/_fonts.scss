@@ -10,3 +10,33 @@
 	font-weight: 400;
 	font-display: swap;
 }
+
+.f-h1,
+.f-h2,
+.f-h3,
+.f-h4,
+.f-body {
+	font-family: var(--ff-kumbh);
+	line-height: 1.2;
+	font-style: normal;
+}
+.f--center {
+	text-align: center;
+}
+.f-h1,
+.f-h2 {
+	font-size: 20px;
+	font-weight: 700;
+}
+.f-h3 {
+	font-size: 16px;
+	font-weight: 700;
+}
+.f-h4 {
+	font-size: 14px;
+	font-weight: 700;
+}
+.f-body {
+	font-size: 16px;
+	font-weight: 400;
+}

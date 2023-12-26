@@ -8,11 +8,6 @@ function App() {
 		<div className="main-container">
 			<Header />
 			<Jobs />
-			<div>
-				Jobs
-				<div>jobs-wrapper</div>
-				<div>load more button</div>
-			</div>
 		</div>
 	);
 }
