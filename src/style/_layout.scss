@@ -7,10 +7,12 @@
 .l-header {
 	padding-inline: 1.5rem;
 	padding-block: 2rem;
+	margin-bottom: 1.5rem;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	position: relative;
+	z-index: 0;
 }
 .l-jobs {
 	padding-inline: 1.5rem;
@@ -18,6 +20,9 @@
 }
 .l-jobs-info {
 	padding-inline: 1.5rem;
+	& > * {
+		margin-bottom: 1.5rem;
+	}
 }
 .l-jobs-wrapper {
 	display: grid;

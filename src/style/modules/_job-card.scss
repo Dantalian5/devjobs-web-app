@@ -1,15 +1,15 @@
-.m-job-card {
+.m-card {
 	padding-inline: 2rem;
-	padding-block: 0rem 2rem;
+	padding-block: 0rem 1rem;
+	border-radius: 6px;
 	display: flex;
 	flex-direction: column;
-
+	background: var(--bkg-secondary);
 	position: relative;
-	& > * {
-		position: relative;
-		z-index: 1;
+	& > :not(.m-card__logo) {
+		margin-bottom: 1rem;
 	}
-	&--centered {
+	&.centered {
 		align-items: center;
 	}
 	&__logo {
@@ -19,36 +19,58 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-bottom: 1.5rem;
-	}
-	&__logo-img {
-		max-width: 80%;
-		width: auto;
+		position: relative;
+		transform: translateY(-50%);
+		&__img {
+			max-width: 80%;
+			width: auto;
+		}
 	}
 	&__title {
 		color: var(--c-primary);
-		margin-bottom: 1rem;
 	}
-	&__info {
+	&__body {
 		color: var(--c-secondary);
-		margin-bottom: 1rem;
+		& > span {
+			margin-inline: 0.5rem;
+		}
 	}
 	&__location {
 		color: var(--c-accent);
-		margin-top: 1.75rem;
+		padding-top: 0.75rem;
 	}
-	&__btn {
-		margin-top: 0.625rem;
+}
+.m-card-info {
+	padding-inline: 2rem;
+	padding-block: 2.5rem;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	background: var(--bkg-secondary);
+	position: relative;
+	color: #fff;
+	& .m-card {
+		&__title {
+		}
+		&__body {
+			color: var(--c-secondary);
+			& > span {
+				margin-inline: 0.5rem;
+			}
+		}
+		&__location {
+			color: var(--c-accent);
+			padding-top: 0.75rem;
+		}
 	}
-	&__point {
-		margin-inline: 0.5rem;
-	}
-	&::before {
-		content: '';
-		position: absolute;
-		inset: 1.5625rem 0 0 0;
-		border-radius: 6px;
-		background: var(--bkg-secondary);
-		z-index: 0;
+}
+.list {
+	list-style: none;
+	&__item {
+		display: flex;
+		&::before {
+			content: '\ec35';
+			margin-right: 2rem;
+		}
 	}
 }

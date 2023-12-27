@@ -15,7 +15,6 @@ function App() {
 		);
 	}, []);
 	function toggleColorScheme() {
-		console.log(colorScheme);
 		setColorScheme((prev) => (prev === 'light' ? 'dark' : 'light'));
 	}
 	const job = {

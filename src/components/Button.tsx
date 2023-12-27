@@ -1,13 +1,19 @@
 interface Button {
-	text: string;
 	action: any;
-	type: any;
+	text: string;
+	type: 'cta' | 'link';
+	size: 'small' | 'medium' | 'large';
 }
-
-function Button({text, action, type}: any) {
+function Button({
+	text = 'Button',
+	action,
+	type = 'cta',
+	size = 'medium',
+}: Button) {
+	const buttonClass = `f-h3 m-button ${type} ${size}`;
 	return (
 		<button
-			className={`f-h3 m-button ${type}`}
+			className={buttonClass}
 			onClick={action}>
 			{text}
 		</button>

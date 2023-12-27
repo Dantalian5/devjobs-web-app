@@ -63,7 +63,8 @@ function Jobs() {
 			<Button
 				text={isLoading ? 'Loading...' : 'Load More'}
 				action={loadMore}
-				type={'type1'}
+				type="cta"
+				size="medium"
 			/>
 		</main>
 	);

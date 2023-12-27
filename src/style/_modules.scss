@@ -1,14 +1,14 @@
 @use 'modules/theme-toggler';
 @use 'modules/finder';
 @use 'modules/job-card';
+@use 'modules/button';
 
 .m-header-bkg {
 	&::before {
 		position: absolute;
 		content: '';
 		inset: 0 0 -2.5rem 0;
-		background: red;
-		z-index: 0;
+		z-index: -1;
 
 		background-image: url(/public/assets/mobile/bg-pattern-header.svg);
 		background-color: #5964e0;
@@ -18,37 +18,8 @@
 }
 .m-logo {
 	width: 7.1875rem;
-	position: relative;
-	z-index: 1;
 }
-.m-button {
-	display: block;
-	border-radius: 5px;
-	padding-block: 1rem;
-	padding-inline: 2rem;
-	margin-inline: auto;
-	&.type1 {
-		background-color: var(--c-accent);
-		color: #fff;
-		&:active {
-			background-color: var(--c-light-accent);
-		}
-	}
-	&.type2 {
-		background-color: rgb(from var(--c-accent) r g b / 0.1);
-		color: var(--c-accent);
-		&:active {
-			background-color: rgb(from var(--c-accent) r g b / 0.35);
-		}
-	}
-	&.type3 {
-		background-color: rgb(from var(--bkg-secondary) r g b / 0.1);
-		color: var(--bkg-secondary);
-		&:active {
-			background-color: rgb(from var(--bkg-secondary) r g b / 0.35);
-		}
-	}
-}
+
 .m-error-msj {
 	padding: 2rem;
 }
