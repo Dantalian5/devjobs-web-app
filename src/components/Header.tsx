@@ -1,5 +1,5 @@
-import ThemeToggler from "./ThemeToggler";
-function Header() {
+import ThemeToggler from './ThemeToggler';
+function Header({colorScheme, colorSchemeFn}: any) {
 	return (
 		<header className="l-header m-header-bkg">
 			<div className="m-logo">
@@ -8,7 +8,10 @@ function Header() {
 					alt="logo"
 				/>
 			</div>
-			<ThemeToggler />
+			<ThemeToggler
+				colorScheme={colorScheme}
+				colorSchemeFn={colorSchemeFn}
+			/>
 		</header>
 	);
 }

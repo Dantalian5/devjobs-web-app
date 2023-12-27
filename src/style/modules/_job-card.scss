@@ -1,10 +1,16 @@
 .m-job-card {
 	padding-inline: 2rem;
 	padding-block: 0rem 2rem;
+	display: flex;
+	flex-direction: column;
+
 	position: relative;
 	& > * {
 		position: relative;
 		z-index: 1;
+	}
+	&--centered {
+		align-items: center;
 	}
 	&__logo {
 		width: 3.125rem;
@@ -19,27 +25,30 @@
 		max-width: 80%;
 		width: auto;
 	}
-	&__point {
-		margin-inline: 0.5rem;
+	&__title {
+		color: var(--c-primary);
+		margin-bottom: 1rem;
 	}
 	&__info {
-		color: var(--c-dark-grey);
-	}
-	&__title {
-		color: var(--c-very-dark-blue);
-		margin-block: 1rem;
+		color: var(--c-secondary);
+		margin-bottom: 1rem;
 	}
 	&__location {
-		color: var(--c-violet);
-		margin-top: 2.75rem;
+		color: var(--c-accent);
+		margin-top: 1.75rem;
+	}
+	&__btn {
+		margin-top: 0.625rem;
+	}
+	&__point {
+		margin-inline: 0.5rem;
 	}
 	&::before {
 		content: '';
 		position: absolute;
 		inset: 1.5625rem 0 0 0;
-		background-color: red;
 		border-radius: 6px;
-		background: var(--c-white);
+		background: var(--bkg-secondary);
 		z-index: 0;
 	}
 }

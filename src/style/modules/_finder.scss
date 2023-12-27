@@ -1,6 +1,6 @@
 .m-filter {
 	width: 100%;
-	background-color: var(--c-white);
+	background-color: var(--bkg-secondary);
 	border-radius: 6px;
 	padding: 1rem;
 	display: flex;
@@ -18,7 +18,7 @@
 		border-radius: 6px;
 		padding: 0.5rem;
 		transition: top 0.2s;
-		color: var(--c-very-dark-blue);
+		color: var(--c-primary);
 		&.active {
 			top: 1em;
 			font-size: 0.875rem;
@@ -27,17 +27,18 @@
 	&__input {
 		flex-grow: 1;
 		margin-left: 0.5rem;
-		color: var(--c-very-dark-blue);
+		color: var(--c-primary);
+		background: none;
 	}
 	&__btn-filter {
-		color: var(--c-dark-grey);
+		color: var(--c-filter);
 		font-size: 1.25rem;
 	}
 	&__btn-search {
 		padding: 0.75rem;
 		border-radius: 5px;
-		background-color: var(--c-violet);
-		color: var(--c-white);
+		background-color: var(--c-accent);
+		color: #fff;
 		font-size: 1.25rem;
 		display: flex;
 		align-items: center;

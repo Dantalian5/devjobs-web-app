@@ -1,7 +1,7 @@
 .main-container {
 	width: 100%;
 	min-height: 100svh;
-	background: #f4f6f8;
+	background: var(--bkg-primary);
 	position: relative;
 }
 .l-header {
@@ -13,6 +13,10 @@
 	position: relative;
 }
 .l-jobs {
+	padding-inline: 1.5rem;
+	padding-bottom: 4rem;
+}
+.l-jobs-info {
 	padding-inline: 1.5rem;
 }
 .l-jobs-wrapper {

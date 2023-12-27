@@ -28,24 +28,27 @@
 	padding-inline: 2rem;
 	margin-inline: auto;
 	&.type1 {
-		background-color: var(--c-violet);
-		color: var(--c-white);
+		background-color: var(--c-accent);
+		color: #fff;
 		&:active {
-			background-color: var(--c-light-violet);
+			background-color: var(--c-light-accent);
 		}
 	}
 	&.type2 {
-		background-color: rgb(from var(--c-violet) r g b / 0.1);
-		color: var(--c-violet);
+		background-color: rgb(from var(--c-accent) r g b / 0.1);
+		color: var(--c-accent);
 		&:active {
-			background-color: rgb(from var(--c-violet) r g b / 0.35);
+			background-color: rgb(from var(--c-accent) r g b / 0.35);
 		}
 	}
 	&.type3 {
-		background-color: rgb(from var(--c-white) r g b / 0.1);
-		color: var(--c-white);
+		background-color: rgb(from var(--bkg-secondary) r g b / 0.1);
+		color: var(--bkg-secondary);
 		&:active {
-			background-color: rgb(from var(--c-white) r g b / 0.35);
+			background-color: rgb(from var(--bkg-secondary) r g b / 0.35);
 		}
 	}
+}
+.m-error-msj {
+	padding: 2rem;
 }

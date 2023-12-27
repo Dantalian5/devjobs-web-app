@@ -1,12 +1,4 @@
-import {useState} from "react";
-
-function ThemeToggler() {
-	const [toggle, setToggle] = useState<boolean>(true);
-
-	function toogleTheme() {
-		setToggle((prevState) => !prevState);
-	}
-
+function ThemeToggler({colorScheme, colorSchemeFn}: any) {
 	return (
 		<div className="m-theme-toggler">
 			<img
@@ -15,8 +7,8 @@ function ThemeToggler() {
 				alt=""
 			/>
 			<button
-				className={`m-toggle-btn ${toggle ? "light" : "dark"}`}
-				onClick={toogleTheme}
+				className={`m-toggle-btn ${colorScheme === 'light' ? 'light' : 'dark'}`}
+				onClick={colorSchemeFn}
 				title="Change Color Theme"></button>
 			<img
 				className="m-theme-toggler__icon-moon"

@@ -1,13 +1,21 @@
-@use "fonts";
+@use 'fonts';
 :root {
-	--c-violet: #5964e0;
-	--c-white: #ffffff;
-	--c-light-violet: #939bf4;
-	--c-light-grey: #f4f6f8;
-	--c-very-dark-blue: #19202d;
-	--c-gray: #9daec2;
-	--c-midnight: #121721;
-	--c-dark-grey: #6e8098;
-
-	--ff-kumbh: "Kumbh Sans", sans-serif;
+	--c-accent: #5964e0;
+	--c-secondary: #6e8098;
+	--c-light-accent: #939bf4;
+	// --c-gray: #9daec2;
+	// --c-midnight: #121721;
+	--ff-kumbh: 'Kumbh Sans', sans-serif;
+}
+.theme-light {
+	--c-primary: #19202d;
+	--bkg-primary: #f4f6f8;
+	--bkg-secondary: #ffffff;
+	--c-filter: #6e8098;
+}
+.theme-dark {
+	--c-primary: #ffffff;
+	--bkg-primary: #121721;
+	--bkg-secondary: #19202d;
+	--c-filter: #fff;
 }

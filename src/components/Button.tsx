@@ -1,3 +1,9 @@
+interface Button {
+	text: string;
+	action: any;
+	type: any;
+}
+
 function Button({text, action, type}: any) {
 	return (
 		<button
