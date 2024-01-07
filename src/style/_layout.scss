@@ -15,17 +15,25 @@
 	z-index: 0;
 }
 .l-jobs {
-	padding-inline: 1.5rem;
-	padding-bottom: 4rem;
-}
-.l-jobs-info {
-	padding-inline: 1.5rem;
-	& > * {
-		margin-bottom: 1.5rem;
+	&__list {
+		padding-inline: 1.5rem;
+		padding-bottom: 4rem;
 	}
+	&__info {
+		padding-inline: 1.5rem;
+	}
+	&__footer {
+		padding: 1.5rem;
+		background: var(--bkg-secondary);
+	}
+}
+.l-foot {
+	padding: 1.5rem;
+	background: var(--bkg-secondary);
 }
 .l-jobs-wrapper {
 	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr));
 	gap: 1.5rem;
 	margin-bottom: 2rem;
 }
