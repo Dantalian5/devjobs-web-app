@@ -1,7 +1,34 @@
-import {useState} from 'react';
+import {useEffect, useState, useCallback} from 'react';
 
-function Finder() {
-	const [isInputFocus, setIsInputFocus] = useState(false);
+function debounce(fn: any, time: number) {
+	let timeout: any;
+	return function executedFunction(...args: any) {
+		const later = () => {
+			clearTimeout(timeout);
+			fn(...args);
+		};
+
+		clearTimeout(timeout);
+		timeout = setTimeout(later, time);
+	};
+}
+type FilterObj = {
+	title: string;
+	location: string;
+	time: boolean;
+};
+function Finder({action}: any) {
+	const [isInputFocus, setIsInputFocus] = useState<boolean>(false);
+	const [input, setInput] = useState<FilterObj>({
+		title: '',
+		location: '',
+		time: false,
+	});
+
+	const debouncedAction = useCallback(debounce(action, 500), []);
+	useEffect(() => {
+		debouncedAction(input.title);
+	}, [input, debouncedAction]);
 
 	return (
 		<div className="m-filter">
@@ -14,8 +41,10 @@ function Finder() {
 				className="m-filter__input f-body"
 				id="finderInput"
 				type="text"
+				value={input.title}
 				onFocus={() => setIsInputFocus(true)}
-				onBlur={() => setIsInputFocus(false)}
+				onBlur={() => setIsInputFocus(input.title === '' ? false : true)}
+				onChange={(e) => setInput((prev) => ({...prev, title: e.target.value}))}
 			/>
 			<button className="m-filter__btn-filter">
 				<svg
@@ -30,6 +59,7 @@ function Finder() {
 					/>
 				</svg>
 			</button>
+
 			<button className="m-filter__btn-search">
 				<svg
 					width="1em"
@@ -48,3 +78,4 @@ function Finder() {
 }
 
 export default Finder;
+// todo : fix, upgrade an finish filter bar,

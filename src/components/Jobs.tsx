@@ -1,11 +1,10 @@
 import Finder from './Finder';
-import JobsBox from './JobsBox';
 import Button from './Button';
 import ErrorMsj from './ErrorMsj';
 import JobCard from './JobCard';
 import JobInfo from './JobInfo';
 import {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {Route, Routes, useLocation} from 'react-router-dom';
 
 type Status = 'success' | 'error';
 // const headers = new Headers({
@@ -14,7 +13,8 @@ type Status = 'success' | 'error';
 // });
 
 function Jobs() {
-	const [jobs, setJobs] = useState([]);
+	const [jobs, setJobs] = useState<any>([]);
+	const [filter, setFilter] = useState<string>('');
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [serverState, setServerState] = useState<Status>('success');
 	const [contList, setContList] = useState<number>(12);
@@ -23,7 +23,9 @@ function Jobs() {
 			setIsLoading(true);
 			const dataFromServer = await fetchData();
 			if (dataFromServer !== 'error') {
-				setJobs(dataFromServer);
+				setJobs(
+					dataFromServer.map((item: any) => ({...item, filtered: false}))
+				);
 				setServerState('success');
 			} else {
 				setServerState('error');
@@ -32,16 +34,29 @@ function Jobs() {
 		}
 		getJobs();
 	}, []);
+	const {pathname} = useLocation();
 
-	const jobList = jobs.slice(0, contList).map((job: any) => (
-		<JobCard
-			key={job.id}
-			job={job}
-			action={showJob}
-		/>
-	));
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [pathname]);
 
-	function showJob(job: any) {}
+	useEffect(() => {
+		let newJobsList = jobs.map((job: any) => ({
+			...job,
+			filtered: !job.position.toLowerCase().includes(filter.toLowerCase()),
+		}));
+		setJobs(newJobsList);
+	}, [filter]);
+
+	const jobList = jobs.slice(0, contList).map(
+		(job: any) =>
+			!job.filtered && (
+				<JobCard
+					key={job.id}
+					job={job}
+				/>
+			)
+	);
 
 	// Fetch data from server
 	async function fetchData() {
@@ -73,7 +88,7 @@ function Jobs() {
 					path="/"
 					element={
 						<div className="l-jobs__list">
-							<Finder />
+							<Finder action={setFilter} />
 							{serverState === 'success' ? (
 								<div className="l-jobs-wrapper">{jobList}</div>
 							) : (
