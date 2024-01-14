@@ -1,4 +1,4 @@
-.m-card {
+.card-job {
 	padding-inline: 2rem;
 	padding-block: 0rem 2.25rem;
 	border-radius: 6px;
@@ -41,7 +41,7 @@
 		padding-top: 0.75rem;
 	}
 }
-.m-card-info {
+.card-info {
 	padding-inline: 1.5rem;
 	padding-block: 2.5rem;
 	margin-bottom: 4rem;
@@ -72,7 +72,7 @@
 		}
 	}
 }
-.m-list {
+.card-list {
 	counter-reset: items;
 	&__item {
 		counter-increment: items;
@@ -93,7 +93,7 @@
 		}
 	}
 	&--numbered {
-		& .m-list__item {
+		& .card-list__item {
 			&::before {
 				content: counter(items);
 			}

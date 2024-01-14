@@ -1,6 +1,5 @@
 import Finder from './Finder';
 import Button from './Button';
-import ErrorMsj from './ErrorMsj';
 import JobCard from './JobCard';
 import JobInfo from './JobInfo';
 import {useState, useEffect} from 'react';
@@ -11,10 +10,18 @@ type Status = 'success' | 'error';
 // 	'Content-Type': 'application/json',
 // 	'Access-Control-Allow-Origin': '*',
 // });
-
+type FilterObj = {
+	title: string;
+	location: string;
+	time: boolean;
+};
 function Jobs() {
 	const [jobs, setJobs] = useState<any>([]);
-	const [filter, setFilter] = useState<string>('');
+	const [filter, setFilter] = useState<FilterObj>({
+		title: '',
+		location: '',
+		time: false,
+	});
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [serverState, setServerState] = useState<Status>('success');
 	const [contList, setContList] = useState<number>(12);
@@ -23,9 +30,7 @@ function Jobs() {
 			setIsLoading(true);
 			const dataFromServer = await fetchData();
 			if (dataFromServer !== 'error') {
-				setJobs(
-					dataFromServer.map((item: any) => ({...item, filtered: false}))
-				);
+				setJobs(dataFromServer.map((item: any) => ({...item, display: true})));
 				setServerState('success');
 			} else {
 				setServerState('error');
@@ -41,16 +46,32 @@ function Jobs() {
 	}, [pathname]);
 
 	useEffect(() => {
-		let newJobsList = jobs.map((job: any) => ({
-			...job,
-			filtered: !job.position.toLowerCase().includes(filter.toLowerCase()),
-		}));
+		let newJobsList = jobs.map((job: any) => {
+			let displayItem;
+			if (
+				job.position.toLowerCase().includes(filter.title.toLowerCase()) &&
+				job.location.toLowerCase().includes(filter.location.toLowerCase())
+			) {
+				displayItem = true;
+			} else {
+				displayItem = false;
+			}
+			if (filter.time) {
+				if ('full time' === job.contract.toLowerCase()) {
+					displayItem = true;
+				} else {
+					displayItem = false;
+				}
+			}
+
+			return {...job, display: displayItem};
+		});
 		setJobs(newJobsList);
 	}, [filter]);
 
 	const jobList = jobs.slice(0, contList).map(
 		(job: any) =>
-			!job.filtered && (
+			job.display && (
 				<JobCard
 					key={job.id}
 					job={job}
@@ -92,7 +113,12 @@ function Jobs() {
 							{serverState === 'success' ? (
 								<div className="l-jobs-wrapper">{jobList}</div>
 							) : (
-								<ErrorMsj />
+								<div className="error-msj">
+									<p className="f-h4">
+										Ups...there was an error, please, reload the page to try
+										again
+									</p>
+								</div>
 							)}
 
 							<Button

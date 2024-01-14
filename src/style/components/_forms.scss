@@ -1,0 +1,55 @@
+.input {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 1rem;
+	color: var(--c-primary);
+	position: relative;
+	&__wrapper {
+		position: relative;
+		flex-grow: 1;
+	}
+	&__label {
+		opacity: 0.5;
+		position: absolute;
+		top: 50%;
+		left: 0;
+		transform: translateY(-50%);
+		transition: top 0.2s;
+	}
+	&__input {
+		width: 100%;
+		background: none;
+		color: inherit;
+	}
+	&__input.focus ~ .input__label {
+		top: -1em;
+		font-size: 0.8em;
+	}
+	&__check {
+		width: 24px;
+		height: 24px;
+		border-radius: 3px;
+		opacity: 0.1035;
+		background-color: var(--c-primary);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		& > .svg-icon {
+			visibility: hidden;
+		}
+	}
+	&__checkbox {
+		visibility: hidden;
+		position: absolute;
+		&:checked {
+			& ~ .input__check {
+				background-color: var(--c-accent);
+				opacity: 1;
+				& > .svg-icon {
+					visibility: visible;
+				}
+			}
+		}
+	}
+}

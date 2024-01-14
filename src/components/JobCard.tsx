@@ -5,18 +5,18 @@ function JobCard({job}: any) {
 			to={`/job/${job.position}`}
 			state={job}>
 			<div
-				className="m-card"
+				className="card-job"
 				style={{cursor: 'pointer'}}>
 				<div
-					className="m-card__logo"
+					className="card-job__logo"
 					style={{backgroundColor: job.logoBackground}}>
 					<img
-						className="m-card__logo__img"
+						className="card-job__logo__img"
 						src={job.logo}
 						alt=""
 					/>
 				</div>
-				<p className="f-body m-card__body">
+				<p className="f-body card-job__body">
 					{job.postedAt}
 					<span>
 						<svg
@@ -35,9 +35,9 @@ function JobCard({job}: any) {
 					</span>
 					{job.contract}
 				</p>
-				<h2 className="f-h2 m-card__title">{job.position}</h2>
-				<p className="f-body m-card__body">{job.company}</p>
-				<h4 className="f-h4 m-card__location">{job.location}</h4>
+				<h2 className="f-h2 card-job__title">{job.position}</h2>
+				<p className="f-body card-job__body">{job.company}</p>
+				<h4 className="f-h4 card-job__location">{job.location}</h4>
 			</div>
 		</Link>
 	);

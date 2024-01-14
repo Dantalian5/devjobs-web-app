@@ -10,7 +10,7 @@ function Button({
 	type = 'cta',
 	size = 'medium',
 }: Button) {
-	const buttonClass = `f-h3 m-button ${type} ${size}`;
+	const buttonClass = `f-h3 btn ${type} ${size}`;
 	return (
 		<button
 			className={buttonClass}

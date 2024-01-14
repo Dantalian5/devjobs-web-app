@@ -1,0 +1,18 @@
+.l-jobs {
+	&__list {
+		padding-inline: 1.5rem;
+		padding-bottom: 4rem;
+	}
+	&__info {
+		padding-inline: 1.5rem;
+		padding-top: 1.5rem;
+	}
+	&__footer {
+		padding: 1.5rem;
+		background: var(--bkg-secondary);
+	}
+}
+.l-foot {
+	padding: 1.5rem;
+	background: var(--bkg-secondary);
+}
