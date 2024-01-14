@@ -1,5 +1,5 @@
 .header {
-	padding-inline: 1.5rem;
+	padding-inline: var(--inner-padding);
 	padding-block: 2rem;
 	display: flex;
 	align-items: center;
@@ -11,8 +11,7 @@
 		content: '';
 		inset: 0 0 -2.5rem 0;
 		z-index: -1;
-
-		background-image: url(/public/assets/mobile/bg-pattern-header.svg);
+		background-image: url(/assets/mobile/bg-pattern-header.svg);
 		background-color: #5964e0;
 		background-repeat: no-repeat;
 		background-size: 100% 100%;

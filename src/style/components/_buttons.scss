@@ -4,15 +4,17 @@
 	justify-content: center;
 	border-radius: 5px;
 	padding-block: 1rem;
-	padding-inline: 2rem;
-	margin-inline: auto;
+
 	&.small {
+		padding: 1rem;
 		width: fit-content;
 	}
-	&.medium {
+	&.static {
+		padding-inline: 2rem;
 		width: fit-content;
 	}
-	&.large {
+	&.flex {
+		padding-inline: 1.75rem;
 		width: 100%;
 	}
 	&.cta {

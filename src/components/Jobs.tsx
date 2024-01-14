@@ -111,7 +111,7 @@ function Jobs() {
 						<div className="l-jobs__list">
 							<Finder action={setFilter} />
 							{serverState === 'success' ? (
-								<div className="l-jobs-wrapper">{jobList}</div>
+								<div className="grid-jobs">{jobList}</div>
 							) : (
 								<div className="error-msj">
 									<p className="f-h4">
@@ -120,13 +120,14 @@ function Jobs() {
 									</p>
 								</div>
 							)}
-
-							<Button
-								text={isLoading ? 'Loading...' : 'Load More'}
-								action={loadMore}
-								type="cta"
-								size="medium"
-							/>
+							<div className="l-jobs__load-more">
+								<Button
+									text={isLoading ? 'Loading...' : 'Load More'}
+									action={loadMore}
+									type="cta"
+									size="static"
+								/>
+							</div>
 						</div>
 					}
 				/>

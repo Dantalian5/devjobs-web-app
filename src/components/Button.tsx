@@ -2,13 +2,13 @@ interface Button {
 	action: any;
 	text: string;
 	type: 'cta' | 'link';
-	size: 'small' | 'medium' | 'large';
+	size: 'small' | 'static' | 'flex';
 }
 function Button({
 	text = 'Button',
 	action,
 	type = 'cta',
-	size = 'medium',
+	size = 'static',
 }: Button) {
 	const buttonClass = `f-h3 btn ${type} ${size}`;
 	return (

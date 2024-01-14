@@ -13,6 +13,14 @@
 	&__input {
 		flex-grow: 1;
 	}
+	&__search-icon {
+		font-size: 1.5rem;
+		color: var(--c-accent);
+		display: none;
+	}
+	&__inner-box {
+		display: none;
+	}
 	&__overlay {
 		display: none;
 		position: fixed;
@@ -37,17 +45,17 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1.75rem;
-		&__separator {
-			width: 100%;
-			height: 0px;
-			position: relative;
-			&::before {
-				content: '';
-				position: absolute;
-				inset: 0 -1.5rem;
-				opacity: 0.2;
-				border: 1px solid var(--c-secondary);
-			}
+	}
+	&__separator {
+		width: 100%;
+		height: 0px;
+		position: relative;
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0 -1.5rem;
+			opacity: 0.2;
+			border: 1px solid var(--c-secondary);
 		}
 	}
 }

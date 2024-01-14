@@ -41,6 +41,44 @@
 		padding-top: 0.75rem;
 	}
 }
+.card-info-job {
+	padding-inline: 2rem;
+	padding-block: 0rem 2.25rem;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	background: var(--bkg-secondary);
+	position: relative;
+	align-items: center;
+	&__logo {
+		width: 3.125rem;
+		height: 3.125rem;
+		border-radius: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		transform: translateY(-50%);
+		&__img {
+			max-width: 80%;
+			width: auto;
+		}
+	}
+	&__info {
+		display: flex;
+		flex-grow: 1;
+		flex-direction: column;
+		align-items: center;
+		gap: 27px;
+	}
+	&__id {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+	}
+}
 .card-info {
 	padding-inline: 1.5rem;
 	padding-block: 2.5rem;
@@ -48,8 +86,14 @@
 	border-radius: 6px;
 	background: var(--bkg-secondary);
 	margin-top: 1.5rem;
+	&__header-wrapper {
+		display: flex;
+		width: 100%;
+		flex-direction: column;
+		gap: 3.375rem;
+		margin-bottom: 1rem;
+	}
 	&__header {
-		margin-bottom: 54px;
 		&-title {
 			margin-block: 0.75rem;
 			color: var(--c-primary);
@@ -59,7 +103,6 @@
 		}
 	}
 	&__wrapper {
-		margin-top: 1rem;
 		&-title {
 			padding-block: 1.5rem 0.75rem;
 			color: var(--c-primary);

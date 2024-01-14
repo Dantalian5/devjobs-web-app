@@ -1,5 +1,9 @@
+:root {
+	--inner-padding: max(1.5rem, 6%);
+}
 .main-container {
 	width: 100%;
+	min-width: 20rem;
 	min-height: 100svh;
 	background: var(--bkg-primary);
 	position: relative;
