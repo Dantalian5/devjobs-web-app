@@ -46,8 +46,10 @@
 			margin-bottom: 2.75rem;
 		}
 	}
-	.btn.flex {
-		width: fit-content;
+	.btn {
+		&.flex {
+			width: fit-content;
+		}
 	}
 	.l-jobs__footer {
 		justify-content: space-between;
@@ -58,36 +60,44 @@
 		}
 	}
 }
-@media (min-width: 46.875rem) {
-	.filter {
-		gap: 20px;
-		&__search-icon {
-			display: block;
-		}
-		&__inner-box {
-			display: flex;
-		}
-		&__overlay {
-			display: none;
-			position: static;
-			padding: 0;
-			background: none;
-		}
-		&__outer-box {
-			flex-direction: row;
-		}
-		&__btn {
-			display: none;
-		}
-		&__separator {
-			width: 0px;
-			height: 100%;
-			&::before {
-				inset: 0;
-			}
-		}
-	}
-}
+// @media (min-width: 46.875rem) {
+// 	.filter {
+// 		gap: 0;
+// 		border: 1px solid red;
+// 		padding-block: 0;
+
+// 		&__overlay {
+// 			display: block;
+// 			position: static;
+// 			padding: 0;
+// 			background: none;
+// 			border-radius: 0;
+// 		}
+// 		&__outer-box {
+// 			max-width: none;
+// 			border: 1px dashed blue;
+// 			border-radius: 0;
+// 			flex-direction: row;
+// 			align-items: center;
+// 			padding: 0;
+// 			gap: 20px;
+// 		}
+// 		&__extra-word {
+// 			display: none;
+// 		}
+// 		&__search-icon {
+// 			display: block;
+// 		}
+// 		&__separator {
+// 			display: static;
+// 			width: 0px;
+// 			height: 5rem;
+// 			&::before {
+// 				inset: 0;
+// 			}
+// 		}
+// 	}
+// }
 @media (min-width: 62.5rem) {
 	:root {
 		--inner-padding: min(10.3125rem, 11.5%);

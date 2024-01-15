@@ -1,0 +1,28 @@
+@media (min-width: 46.875rem) {
+	.filter {
+		&__extras-section {
+			display: flex;
+			position: static;
+			padding: 0;
+		}
+		&__btn-section {
+			display: none;
+		}
+		&__search-icon {
+			display: block;
+		}
+	}
+	.extras-section {
+		flex-direction: row;
+		padding: 0;
+		align-items: center;
+		&__separator {
+			display: static;
+			width: 0px;
+			height: 5rem;
+			&::before {
+				inset: 0;
+			}
+		}
+	}
+}

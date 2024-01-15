@@ -106,30 +106,109 @@ function Finder({action}: any) {
 
 	return (
 		<div className="filter">
-			<div className="filter__input input">
-				<div className="input__icon filter__search-icon">{iconSearch}</div>
-				<div className="input__wrapper f-body">
-					<input
-						className="input__input"
-						id="finderInput"
-						type="text"
-						value={input.title}
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-						onChange={(e) =>
-							setInput((prev) => ({...prev, title: e.target.value}))
-						}
-					/>
-					<label
-						className={'input__label'}
-						htmlFor="finderInput">
-						Filter by title…
-					</label>
+			<div className="filter__title-section">
+				<div className="input">
+					<div className="input__icon filter__search-icon">{iconSearch}</div>
+					<div className="input__wrapper f-body">
+						<input
+							className="input__input"
+							id="finderInput"
+							type="text"
+							value={input.title}
+							onFocus={handleFocus}
+							onBlur={handleBlur}
+							onChange={(e) =>
+								setInput((prev) => ({...prev, title: e.target.value}))
+							}
+						/>
+						<label
+							className={'input__label'}
+							htmlFor="finderInput">
+							Filter by title…
+						</label>
+					</div>
 				</div>
 			</div>
+			<div
+				className={`filter__extras-section ${showOverlay && 'overlay-active'}`}
+				onClick={handleOverlayClick}>
+				<div
+					className="extras-section"
+					onClick={handleBoxClick}>
+					<div className="input">
+						<div className="input__icon">{iconLocation}</div>
+						<div className="input__wrapper f-body">
+							<input
+								className="input__input "
+								id="finderInputLocation"
+								type="text"
+								value={input.location}
+								onFocus={handleFocus}
+								onBlur={handleBlur}
+								onChange={(e) =>
+									setInput((prev) => ({...prev, location: e.target.value}))
+								}
+							/>
+							<label
+								className={'input__label'}
+								htmlFor="finderInputLocation">
+								Filter by location…
+							</label>
+						</div>
+					</div>
+					<div className="extras-section__separator"></div>
+					<div className="input">
+						<input
+							type="checkbox"
+							id="inputTime"
+							name="inputTime"
+							className="input__checkbox"
+							checked={input.time}
+							onChange={() => setInput((prev) => ({...prev, time: !prev.time}))}
+						/>
+						<div
+							className="input__check"
+							onClick={() => setInput((prev) => ({...prev, time: !prev.time}))}>
+							{iconCheck}
+						</div>
+						<label
+							htmlFor="inputTime"
+							className="input__label-check f-h3">
+							Full Time <span className="filter__extra-word"> Only</span>
+						</label>
+					</div>
+					<Button
+						action={onSearch}
+						text="Search"
+						type="cta"
+						size="flex"
+					/>
+				</div>
+			</div>
+			<div className="filter__btn-section">
+				<button
+					className="btn-filter"
+					onClick={() => setShowOverlay(true)}>
+					{iconFilter}
+				</button>
+				<button
+					className="btn-search"
+					onClick={onSearch}>
+					{iconSearch}
+				</button>
+			</div>
+		</div>
+	);
+}
 
-			{/* // Hard coded inner input */}
-			<div className="filter__separator filter__inner-box"></div>
+export default Finder;
+// todo : fix, upgrade an finish filter bar on > 600px it sucks!!!,
+
+{
+	/* // Hard coded inner input */
+}
+{
+	/* <div className="filter__separator filter__inner-box"></div>
 			<div className="filter__input input filter__inner-box">
 				<div className="input__icon">{iconLocation}</div>
 				<div className="input__wrapper f-body">
@@ -175,17 +254,22 @@ function Finder({action}: any) {
 					type="cta"
 					size="small"
 				/>
-			</div>
+			</div> */
+}
 
-			{/* //----------------------------------------- */}
+{
+	/* //----------------------------------------- */
+}
 
-			<div
+{
+	/* <div
 				className={`filter__overlay ${showOverlay && 'active'}`}
 				onClick={handleOverlayClick}>
 				<div
 					className="filter__outer-box"
 					onClick={handleBoxClick}>
-					<div className="input">
+					<div className="filter__separator"></div>
+					<div className="input filter__input">
 						<div className="input__icon">{iconLocation}</div>
 						<div className="input__wrapper f-body">
 							<input
@@ -207,7 +291,7 @@ function Finder({action}: any) {
 						</div>
 					</div>
 					<div className="filter__separator"></div>
-					<div className="input f-h3">
+					<div className="input filter__input f-h3">
 						<input
 							type="checkbox"
 							id="inputTime"
@@ -220,7 +304,7 @@ function Finder({action}: any) {
 						<label
 							htmlFor="inputTime"
 							className="input__label-check">
-							Full Time Only
+							Full Time <span className="filter__extra-word"> Only</span>
 						</label>
 					</div>
 					<Button
@@ -230,20 +314,5 @@ function Finder({action}: any) {
 						size="flex"
 					/>
 				</div>
-			</div>
-			<button
-				className="btn-filter filter__btn"
-				onClick={() => setShowOverlay(true)}>
-				{iconFilter}
-			</button>
-			<button
-				className="btn-search filter__btn"
-				onClick={onSearch}>
-				{iconSearch}
-			</button>
-		</div>
-	);
+			</div> */
 }
-
-export default Finder;
-// todo : fix, upgrade an finish filter bar on > 600px it sucks!!!,
