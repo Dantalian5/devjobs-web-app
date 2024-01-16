@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import Button from './Button';
 
 type FilterObj = {
@@ -63,22 +63,6 @@ const iconCheck: any = (
 	</svg>
 );
 
-function useWindowWidth() {
-	const [width, setWidth] = useState(window.innerWidth);
-
-	useEffect(() => {
-		const handleResize = () => setWidth(window.innerWidth);
-
-		window.addEventListener('resize', handleResize);
-
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, []);
-
-	return width;
-}
-
 function Finder({action}: any) {
 	const [input, setInput] = useState<FilterObj>({
 		title: '',
@@ -86,7 +70,6 @@ function Finder({action}: any) {
 		time: false,
 	});
 	const [showOverlay, setShowOverlay] = useState<boolean>(false);
-	const width = useWindowWidth();
 
 	function handleFocus(event: any) {
 		event.target.classList.add('focus');
@@ -203,117 +186,3 @@ function Finder({action}: any) {
 }
 
 export default Finder;
-// todo : fix, upgrade an finish filter bar on > 600px it sucks!!!,
-
-{
-	/* // Hard coded inner input */
-}
-{
-	/* <div className="filter__separator filter__inner-box"></div>
-			<div className="filter__input input filter__inner-box">
-				<div className="input__icon">{iconLocation}</div>
-				<div className="input__wrapper f-body">
-					<input
-						className="input__input "
-						id="finderInputLocation"
-						type="text"
-						value={input.location}
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-						onChange={(e) =>
-							setInput((prev) => ({...prev, location: e.target.value}))
-						}
-					/>
-					<label
-						className={'input__label'}
-						htmlFor="finderInputLocation">
-						Filter by location…
-					</label>
-				</div>
-			</div>
-			<div className="filter__separator filter__inner-box"></div>
-			<div className="filter__input input f-h3 filter__inner-box">
-				<input
-					type="checkbox"
-					id="inputTime"
-					name="inputTime"
-					className="input__checkbox"
-					checked={input.time}
-					onChange={() => setInput((prev) => ({...prev, time: !prev.time}))}
-				/>
-				<div className="input__check">{iconCheck}</div>
-				<label
-					htmlFor="inputTime"
-					className="input__label-check">
-					Full Time
-				</label>
-			</div>
-			<div className="filter__btn-search filter__inner-box">
-				<Button
-					action={onSearch}
-					text="Search"
-					type="cta"
-					size="small"
-				/>
-			</div> */
-}
-
-{
-	/* //----------------------------------------- */
-}
-
-{
-	/* <div
-				className={`filter__overlay ${showOverlay && 'active'}`}
-				onClick={handleOverlayClick}>
-				<div
-					className="filter__outer-box"
-					onClick={handleBoxClick}>
-					<div className="filter__separator"></div>
-					<div className="input filter__input">
-						<div className="input__icon">{iconLocation}</div>
-						<div className="input__wrapper f-body">
-							<input
-								className="input__input "
-								id="finderInputLocation"
-								type="text"
-								value={input.location}
-								onFocus={handleFocus}
-								onBlur={handleBlur}
-								onChange={(e) =>
-									setInput((prev) => ({...prev, location: e.target.value}))
-								}
-							/>
-							<label
-								className={'input__label'}
-								htmlFor="finderInputLocation">
-								Filter by location…
-							</label>
-						</div>
-					</div>
-					<div className="filter__separator"></div>
-					<div className="input filter__input f-h3">
-						<input
-							type="checkbox"
-							id="inputTime"
-							name="inputTime"
-							className="input__checkbox"
-							checked={input.time}
-							onChange={() => setInput((prev) => ({...prev, time: !prev.time}))}
-						/>
-						<div className="input__check">{iconCheck}</div>
-						<label
-							htmlFor="inputTime"
-							className="input__label-check">
-							Full Time <span className="filter__extra-word"> Only</span>
-						</label>
-					</div>
-					<Button
-						action={onSearch}
-						text="Search"
-						type="cta"
-						size="flex"
-					/>
-				</div>
-			</div> */
-}
