@@ -60,49 +60,59 @@
 		}
 	}
 }
-// @media (min-width: 46.875rem) {
-// 	.filter {
-// 		gap: 0;
-// 		border: 1px solid red;
-// 		padding-block: 0;
-
-// 		&__overlay {
-// 			display: block;
-// 			position: static;
-// 			padding: 0;
-// 			background: none;
-// 			border-radius: 0;
-// 		}
-// 		&__outer-box {
-// 			max-width: none;
-// 			border: 1px dashed blue;
-// 			border-radius: 0;
-// 			flex-direction: row;
-// 			align-items: center;
-// 			padding: 0;
-// 			gap: 20px;
-// 		}
-// 		&__extra-word {
-// 			display: none;
-// 		}
-// 		&__search-icon {
-// 			display: block;
-// 		}
-// 		&__separator {
-// 			display: static;
-// 			width: 0px;
-// 			height: 5rem;
-// 			&::before {
-// 				inset: 0;
-// 			}
-// 		}
-// 	}
-// }
+@media (min-width: 46.875rem) {
+	.filter {
+		padding-block: 0;
+		&__extras-section {
+			display: flex;
+			max-width: 31.25rem;
+			position: static;
+			padding: 0;
+			background: none;
+		}
+		&__btn-section {
+			display: none;
+		}
+		&__search-icon {
+			display: block;
+		}
+	}
+	.input__label-check > span {
+		display: none;
+	}
+	.extras-section {
+		flex-direction: row;
+		padding: 0;
+		align-items: center;
+		max-width: none;
+		&__separator {
+			display: block;
+			width: 0px;
+			height: 5rem;
+			&.inner-sep {
+				display: block;
+			}
+			&::before {
+				inset: 0;
+			}
+		}
+	}
+}
 @media (min-width: 62.5rem) {
 	:root {
 		--inner-padding: min(10.3125rem, 11.5%);
 	}
+	.header {
+		&--bkg::before {
+			background-image: url(/assets/desktop/bg-pattern-header.svg);
+		}
+	}
 	.grid-jobs {
 		column-gap: 1.875rem;
+	}
+	.filter {
+		&__extras-section {
+			max-width: 40.625rem;
+		}
 	}
 }

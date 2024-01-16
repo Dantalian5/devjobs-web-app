@@ -1,4 +1,5 @@
 .input {
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
@@ -7,7 +8,7 @@
 	position: relative;
 	&__wrapper {
 		position: relative;
-		flex-grow: 1;
+		flex: 1 1 auto;
 	}
 	&__label {
 		opacity: 0.5;
@@ -27,8 +28,9 @@
 		font-size: 0.8em;
 	}
 	&__check {
-		width: 24px;
-		height: 24px;
+		flex: 0 0 auto;
+		width: 1.5rem;
+		aspect-ratio: 1;
 		border-radius: 3px;
 		opacity: 0.1035;
 		background-color: var(--c-primary);

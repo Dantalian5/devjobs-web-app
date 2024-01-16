@@ -135,7 +135,8 @@ function Finder({action}: any) {
 				<div
 					className="extras-section"
 					onClick={handleBoxClick}>
-					<div className="input">
+					<div className="extras-section__separator inner-sep"></div>
+					<div className="input extras-section__location">
 						<div className="input__icon">{iconLocation}</div>
 						<div className="input__wrapper f-body">
 							<input
@@ -157,7 +158,7 @@ function Finder({action}: any) {
 						</div>
 					</div>
 					<div className="extras-section__separator"></div>
-					<div className="input">
+					<div className="input extras-section__full-time">
 						<input
 							type="checkbox"
 							id="inputTime"
@@ -174,7 +175,7 @@ function Finder({action}: any) {
 						<label
 							htmlFor="inputTime"
 							className="input__label-check f-h3">
-							Full Time <span className="filter__extra-word"> Only</span>
+							Full Time <span> Only</span>
 						</label>
 					</div>
 					<Button
