@@ -77,7 +77,12 @@ function Finder({action}: any) {
 	function handleBlur(event: any) {
 		event.target.value === '' && event.target.classList.remove('focus');
 	}
-	function onSearch() {
+	function onSubmit(event: any) {
+		event.preventDefault();
+		action(input);
+	}
+	function onCheck() {
+		setInput((prev) => ({...prev, time: !prev.time}));
 		action(input);
 	}
 	const handleOverlayClick = () => {
@@ -88,7 +93,9 @@ function Finder({action}: any) {
 	};
 
 	return (
-		<div className="filter">
+		<form
+			className="filter"
+			onSubmit={onSubmit}>
 			<div className="filter__title-section">
 				<div className="input">
 					<div className="input__icon filter__search-icon">{iconSearch}</div>
@@ -148,11 +155,11 @@ function Finder({action}: any) {
 							name="inputTime"
 							className="input__checkbox"
 							checked={input.time}
-							onChange={() => setInput((prev) => ({...prev, time: !prev.time}))}
+							onChange={onCheck}
 						/>
 						<div
 							className="input__check"
-							onClick={() => setInput((prev) => ({...prev, time: !prev.time}))}>
+							onClick={onCheck}>
 							{iconCheck}
 						</div>
 						<label
@@ -162,7 +169,7 @@ function Finder({action}: any) {
 						</label>
 					</div>
 					<Button
-						action={onSearch}
+						action={onSubmit}
 						text="Search"
 						type="cta"
 						size="flex"
@@ -177,11 +184,11 @@ function Finder({action}: any) {
 				</button>
 				<button
 					className="btn-search"
-					onClick={onSearch}>
+					type="submit">
 					{iconSearch}
 				</button>
 			</div>
-		</div>
+		</form>
 	);
 }
 

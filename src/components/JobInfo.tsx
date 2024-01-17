@@ -103,16 +103,18 @@ function JobInfo() {
 				</div>
 			</section>
 			<div className="l-jobs__footer">
-				<div className="l-jobs__footer__info">
-					<h2 className="f-h2 l-jobs__footer__title">{job.position}</h2>
-					<p className="f-body l-jobs__footer__subtitle">{job.company}</p>
+				<div className="l-jobs__footer__wrapper">
+					<div className="l-jobs__footer__info">
+						<h2 className="f-h2 l-jobs__footer__title">{job.position}</h2>
+						<p className="f-body l-jobs__footer__subtitle">{job.company}</p>
+					</div>
+					<Button
+						action={() => console.log('clicked')}
+						text="Apply Now"
+						size="flex"
+						type="cta"
+					/>
 				</div>
-				<Button
-					action={() => console.log('clicked')}
-					text="Apply Now"
-					size="flex"
-					type="cta"
-				/>
 			</div>
 		</>
 	);

@@ -115,4 +115,10 @@
 			max-width: 40.625rem;
 		}
 	}
+	.input__label-check > span {
+		display: inline;
+	}
+	.btn.flex {
+		padding-inline: 2rem;
+	}
 }

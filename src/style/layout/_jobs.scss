@@ -16,9 +16,14 @@
 		padding-block: 1.5rem;
 		padding-inline: var(--inner-padding);
 		background: var(--bkg-secondary);
-		display: flex;
-		align-items: center;
-		justify-content: center;
+
+		&__wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			max-width: 45.625rem;
+			margin-inline: auto;
+		}
 		&__info {
 			display: none;
 		}
