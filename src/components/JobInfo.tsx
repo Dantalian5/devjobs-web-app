@@ -18,9 +18,6 @@ const svgDot = (
 );
 function JobInfo() {
 	let id: number = 1;
-	const handleClick = () => {
-		window.location.href = job.website;
-	};
 	const job = useLocation().state;
 
 	return (
@@ -33,7 +30,7 @@ function JobInfo() {
 						<img
 							className="card-info-job__logo__img"
 							src={job.logo}
-							alt=""
+							alt="logo"
 						/>
 					</div>
 					<div className="card-info-job__info">
@@ -45,7 +42,8 @@ function JobInfo() {
 							text={'Company Site'}
 							type={'link'}
 							size={'static'}
-							action={handleClick}
+							linked={true}
+							link={job.website}
 						/>
 					</div>
 				</div>
@@ -64,10 +62,11 @@ function JobInfo() {
 						</div>
 
 						<Button
-							action={() => console.log('clicked')}
 							text="Apply Now"
 							size="flex"
 							type="cta"
+							linked={true}
+							link={job.apply}
 						/>
 					</div>
 
@@ -109,10 +108,11 @@ function JobInfo() {
 						<p className="f-body l-jobs__footer__subtitle">{job.company}</p>
 					</div>
 					<Button
-						action={() => console.log('clicked')}
 						text="Apply Now"
 						size="flex"
 						type="cta"
+						linked={true}
+						link={job.apply}
 					/>
 				</div>
 			</div>

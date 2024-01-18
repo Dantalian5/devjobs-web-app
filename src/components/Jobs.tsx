@@ -48,20 +48,24 @@ function Jobs() {
 	useEffect(() => {
 		let newJobsList = jobs.map((job: any) => {
 			let displayItem;
+			let isInTime;
+			if (filter.time) {
+				if ('full time' === job.contract.toLowerCase()) {
+					isInTime = true;
+				} else {
+					isInTime = false;
+				}
+			} else {
+				isInTime = true;
+			}
 			if (
 				job.position.toLowerCase().includes(filter.title.toLowerCase()) &&
-				job.location.toLowerCase().includes(filter.location.toLowerCase())
+				job.location.toLowerCase().includes(filter.location.toLowerCase()) &&
+				isInTime
 			) {
 				displayItem = true;
 			} else {
 				displayItem = false;
-			}
-			if (filter.time) {
-				if ('full time' === job.contract.toLowerCase()) {
-					displayItem = true;
-				} else {
-					displayItem = false;
-				}
 			}
 
 			return {...job, display: displayItem};

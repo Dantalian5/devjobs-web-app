@@ -1,22 +1,38 @@
 interface Button {
-	action: any;
+	action?: any;
 	text: string;
 	type: 'cta' | 'link';
 	size: 'small' | 'static' | 'flex';
+	linked?: boolean;
+	link?: string;
 }
 function Button({
 	text = 'Button',
 	action,
 	type = 'cta',
 	size = 'static',
+	linked = false,
+	link = '',
 }: Button) {
 	const buttonClass = `f-h3 btn ${type} ${size}`;
+
 	return (
-		<button
-			className={buttonClass}
-			onClick={action}>
-			{text}
-		</button>
+		<>
+			{linked ? (
+				<a
+					className={buttonClass}
+					href={link}
+					target="_blank">
+					{text}
+				</a>
+			) : (
+				<button
+					className={buttonClass}
+					onClick={action}>
+					{text}
+				</button>
+			)}
+		</>
 	);
 }
 

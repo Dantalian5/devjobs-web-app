@@ -20,14 +20,14 @@
 	&.cta {
 		background-color: var(--c-accent);
 		color: #fff;
-		&:active {
+		&:hover {
 			background-color: var(--c-light-accent);
 		}
 	}
 	&.link {
 		background-color: rgb(from var(--c-accent) r g b / 0.1);
 		color: var(--c-accent);
-		&:active {
+		&:hover {
 			background-color: rgb(from var(--c-accent) r g b / 0.35);
 		}
 	}

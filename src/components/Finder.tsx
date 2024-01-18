@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Button from './Button';
 
 type FilterObj = {
@@ -63,6 +63,10 @@ const iconCheck: any = (
 	</svg>
 );
 
+const handleBoxClick = (e: any) => {
+	e.stopPropagation();
+};
+
 function Finder({action}: any) {
 	const [input, setInput] = useState<FilterObj>({
 		title: '',
@@ -83,15 +87,13 @@ function Finder({action}: any) {
 	}
 	function onCheck() {
 		setInput((prev) => ({...prev, time: !prev.time}));
-		action(input);
 	}
+	useEffect(() => {
+		action(input);
+	}, [input.time]);
 	const handleOverlayClick = () => {
 		setShowOverlay(false);
 	};
-	const handleBoxClick = (e: any) => {
-		e.stopPropagation();
-	};
-
 	return (
 		<form
 			className="filter"
