@@ -74,7 +74,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](images/screenshot.png)
 
 This is a solution to the [Devjobs web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/devjobs-web-app-HuvC_LP4l). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
@@ -87,6 +87,7 @@ This is a solution to the [Devjobs web app challenge on Frontend Mentor](https:/
 - Javascript / Typescript
 - [React](https://reactjs.org/) - JS library
 - Vite (bundler)
+- Firestore
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -109,6 +110,20 @@ This is a solution to the [Devjobs web app challenge on Frontend Mentor](https:/
    npm run dev;
    ```
 
+- For local server use:
+
+4.  Run (remember to uncoment the code using de local server and comment the firestore code)
+    ```sh
+    npm run server;
+    ```
+
+- For firestore server use:
+
+4.  Updload all data stored on data.json to firestore, using **importdatatofs.cjs** to manually upload. !! Remember to use your own firestore credential :|
+    ```sh
+    node importdatatofs.cjs;
+    ```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
@@ -119,11 +134,12 @@ This is a solution to the [Devjobs web app challenge on Frontend Mentor](https:/
 
 ### Users should be able to:
 
-- [ ] View the optimal layout for each page depending on their device's screen size
-- [ ] See hover states for all interactive elements throughout the site
-- [ ] Be able to filter jobs on the index page by title, location, and whether a job is for a full-time position
-- [ ] Be able to click a job from the index page so that they can read more information and apply for the job
-- [ ] **Bonus**: Have the correct color scheme chosen for them based on their computer preferences. _Hint_: Research `prefers-color-scheme` in CSS.
+- [x] View the optimal layout for each page depending on their device's screen size
+- [x] See hover states for all interactive elements throughout the site
+- [x] Be able to filter jobs on the index page by title, location, and whether a job is for a full-time position
+- [x] Be able to click a job from the index page so that they can read more information and apply for the job
+- [x] **Bonus**: Have the correct color scheme chosen for them based on their computer preferences. _Hint_: Research `prefers-color-scheme` in CSS.
+- [ ] Personal **bonus**: add firestore backend **db**.
 
 See the [open issues](https://github.com/Dantalian5/devjobs-web-app/issues) for a full list of proposed features (and known issues).
 
@@ -192,19 +208,5 @@ Project Link: [https://github.com/Dantalian5/devjobs-web-app](https://github.com
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com

@@ -2,8 +2,10 @@ import Finder from './Finder';
 import Button from './Button';
 import JobCard from './JobCard';
 import JobInfo from './JobInfo';
+import {db} from '../firebase';
 import {useState, useEffect} from 'react';
 import {Route, Routes, useLocation} from 'react-router-dom';
+import {collection, getDocs} from 'firebase/firestore';
 
 type Status = 'success' | 'error';
 // const headers = new Headers({
@@ -28,9 +30,14 @@ function Jobs() {
 	useEffect(() => {
 		async function getJobs() {
 			setIsLoading(true);
-			const dataFromServer = await fetchData();
-			if (dataFromServer !== 'error') {
-				setJobs(dataFromServer.map((item: any) => ({...item, display: true})));
+			//const dataFromServer = await fetchData();
+			const dataFromServer = await getDocs(collection(db, 'jobs'));
+			if (dataFromServer) {
+				const data: any = [];
+				dataFromServer.forEach((doc) => {
+					data.push(doc.data());
+				});
+				setJobs(data.map((item: any) => ({...item, display: true})));
 				setServerState('success');
 			} else {
 				setServerState('error');
@@ -84,19 +91,19 @@ function Jobs() {
 	);
 
 	// Fetch data from server
-	async function fetchData() {
-		try {
-			const res = await fetch('http://192.168.1.101:5000/jobs');
-			if (res.ok) {
-				const data = await res.json();
-				return data;
-			} else {
-				throw new Error('res.status');
-			}
-		} catch (error) {
-			return 'error';
-		}
-	}
+	// async function fetchData() {
+	// 	try {
+	// 		const res = await fetch('http://192.168.1.101:5000/jobs');
+	// 		if (res.ok) {
+	// 			const data = await res.json();
+	// 			return data;
+	// 		} else {
+	// 			throw new Error('res.status');
+	// 		}
+	// 	} catch (error) {
+	// 		return 'error';
+	// 	}
+	// }
 	// Load More
 	function loadMore() {
 		setIsLoading(true);
@@ -145,3 +152,5 @@ function Jobs() {
 }
 
 export default Jobs;
+
+// todo : fix firestore server get() there is a problem to solve
