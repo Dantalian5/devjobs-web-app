@@ -56,6 +56,7 @@
 	background: var(--bkg-secondary);
 	position: relative;
 	align-items: center;
+	margin-bottom: 1.5rem;
 	&__logo {
 		width: 3.125rem;
 		height: 3.125rem;
@@ -90,7 +91,7 @@
 	margin-bottom: 4rem;
 	border-radius: 6px;
 	background: var(--bkg-secondary);
-	margin-top: 1.5rem;
+
 	&__header-wrapper {
 		display: flex;
 		width: 100%;
