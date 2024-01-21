@@ -1,21 +1,7 @@
-import Button from './Button';
 import {useLocation} from 'react-router-dom';
+import Button from '@/components/Button';
+import {svgDot} from '@/utils/SvgIcon';
 
-const svgDot = (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="4"
-		height="4"
-		viewBox="0 0 4 4"
-		fill="none">
-		<circle
-			cx="2"
-			cy="2"
-			r="2"
-			fill="currentColor"
-		/>
-	</svg>
-);
 function JobInfo() {
 	let id: number = 1;
 	const job = useLocation().state;

@@ -1,4 +1,4 @@
-import JobCard from './JobCard';
+import JobCard from '@/components/JobCard';
 function JobsBox({data}: any) {
 	const jobs = data.map((job: any) => (
 		<JobCard

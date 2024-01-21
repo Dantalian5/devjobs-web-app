@@ -1,17 +1,14 @@
-import Finder from './Finder';
-import Button from './Button';
-import JobCard from './JobCard';
-import JobInfo from './JobInfo';
-import {db} from '../firebase';
+import {collection, getDocs} from 'firebase/firestore';
 import {useState, useEffect} from 'react';
 import {Route, Routes, useLocation} from 'react-router-dom';
-import {collection, getDocs} from 'firebase/firestore';
+import Filter from '@/components/Filter';
+import Button from '@/components/Button';
+import JobCard from '@/components/JobCard';
+import JobInfo from '@/components/JobInfo';
+// import { fetchData } from '@/utils/fetchData';
+import {db} from '@/firebase';
 
 type Status = 'success' | 'error';
-// const headers = new Headers({
-// 	'Content-Type': 'application/json',
-// 	'Access-Control-Allow-Origin': '*',
-// });
 type FilterObj = {
 	title: string;
 	location: string;
@@ -89,21 +86,6 @@ function Jobs() {
 				/>
 			)
 	);
-
-	// Fetch data from server
-	// async function fetchData() {
-	// 	try {
-	// 		const res = await fetch('http://192.168.1.101:5000/jobs');
-	// 		if (res.ok) {
-	// 			const data = await res.json();
-	// 			return data;
-	// 		} else {
-	// 			throw new Error('res.status');
-	// 		}
-	// 	} catch (error) {
-	// 		return 'error';
-	// 	}
-	// }
 	// Load More
 	function loadMore() {
 		setIsLoading(true);
@@ -120,7 +102,7 @@ function Jobs() {
 					path="/"
 					element={
 						<div className="l-jobs__list">
-							<Finder action={setFilter} />
+							<Filter action={setFilter} />
 							{serverState === 'success' ? (
 								<div className="grid-jobs">{jobList}</div>
 							) : (

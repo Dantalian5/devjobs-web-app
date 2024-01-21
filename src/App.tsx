@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
-import Header from './components/Header';
-import Jobs from './components/Jobs';
 import {BrowserRouter} from 'react-router-dom';
+import Header from '@/components/Header';
+import Jobs from '@/components/Jobs';
 
 type Theme = 'dark' | 'light';
 
