@@ -139,7 +139,7 @@ This is a solution to the [Devjobs web app challenge on Frontend Mentor](https:/
 - [x] Be able to filter jobs on the index page by title, location, and whether a job is for a full-time position
 - [x] Be able to click a job from the index page so that they can read more information and apply for the job
 - [x] **Bonus**: Have the correct color scheme chosen for them based on their computer preferences. _Hint_: Research `prefers-color-scheme` in CSS.
-- [ ] Personal **bonus**: add firestore backend **db**.
+- [x] Personal **bonus**: add firestore backend **db**.
 
 See the [open issues](https://github.com/Dantalian5/devjobs-web-app/issues) for a full list of proposed features (and known issues).
 

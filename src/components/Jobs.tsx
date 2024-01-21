@@ -8,7 +8,7 @@ import JobInfo from '@/components/JobInfo';
 // import { fetchData } from '@/utils/fetchData';
 import {db} from '@/firebase';
 
-type Status = 'success' | 'error';
+type Status = {status: 'success' | 'error'; message: string};
 type FilterObj = {
 	title: string;
 	location: string;
@@ -22,24 +22,51 @@ function Jobs() {
 		time: false,
 	});
 	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const [serverState, setServerState] = useState<Status>('success');
+	const [serverState, setServerState] = useState<Status>({
+		status: 'success',
+		message: '',
+	});
 	const [contList, setContList] = useState<number>(12);
 	useEffect(() => {
 		async function getJobs() {
 			setIsLoading(true);
 			//const dataFromServer = await fetchData();
-			const dataFromServer = await getDocs(collection(db, 'jobs'));
-			if (dataFromServer) {
-				const data: any = [];
-				dataFromServer.forEach((doc) => {
-					data.push(doc.data());
-				});
-				setJobs(data.map((item: any) => ({...item, display: true})));
-				setServerState('success');
+			if (navigator.onLine) {
+				try {
+					const dataFromServer = await getDocs(collection(db, 'jobs'));
+					const data: any = [];
+					dataFromServer.forEach((doc) => {
+						data.push(doc.data());
+					});
+					setJobs(data.map((item: any) => ({...item, display: true})));
+					setServerState({status: 'success', message: ''});
+				} catch (error) {
+					setServerState({
+						status: 'error',
+						message:
+							'Ups...there was an error, please, reload the page to try again',
+					});
+				}
 			} else {
-				setServerState('error');
+				setServerState({
+					status: 'error',
+					message: 'Ups...please check your internet :(',
+				});
 			}
 			setIsLoading(false);
+			// const dataFromServer = await getDocs(collection(db, 'jobs'));
+			// console.log(dataFromServer);
+			// if (dataFromServer) {
+			// 	const data: any = [];
+			// 	dataFromServer.forEach((doc) => {
+			// 		data.push(doc.data());
+			// 	});
+			// 	setJobs(data.map((item: any) => ({...item, display: true})));
+			// 	setServerState('success');
+			// } else {
+			// 	setServerState('error');
+			// }
+			// setIsLoading(false);
 		}
 		getJobs();
 	}, []);
@@ -103,14 +130,11 @@ function Jobs() {
 					element={
 						<div className="l-jobs__list">
 							<Filter action={setFilter} />
-							{serverState === 'success' ? (
+							{serverState.status === 'success' ? (
 								<div className="grid-jobs">{jobList}</div>
 							) : (
 								<div className="error-msj">
-									<p className="f-h4">
-										Ups...there was an error, please, reload the page to try
-										again
-									</p>
+									<p className="f-h4">{serverState.message}</p>
 								</div>
 							)}
 							<div className="l-jobs__load-more">
