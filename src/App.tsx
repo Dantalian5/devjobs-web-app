@@ -1,45 +1,44 @@
-import {useState} from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import {useEffect, useState} from 'react';
+import {BrowserRouter} from 'react-router-dom';
+import Header from '@/components/Header';
+import Jobs from '@/components/Jobs';
+
+type Theme = 'dark' | 'light';
 
 function App() {
-	const [count, setCount] = useState(0);
+	const [colorScheme, setColorScheme] = useState<Theme>('light');
+	useEffect(() => {
+		setColorScheme(() => {
+			let localScheme = localStorage.getItem('colorScheme');
+
+			switch (localScheme) {
+				case 'light':
+					return 'light';
+				case 'dark':
+					return 'dark';
+				default:
+					return window.matchMedia('(prefers-color-scheme: dark)').matches
+						? 'dark'
+						: 'light';
+			}
+		});
+	}, []);
+	function toggleColorScheme() {
+		let newColor: Theme = colorScheme === 'light' ? 'dark' : 'light';
+		localStorage.setItem('colorScheme', newColor);
+		setColorScheme(newColor);
+	}
 
 	return (
-		<>
-			<div>
-				<a
-					href="https://vitejs.dev"
-					target="_blank">
-					<img
-						src={viteLogo}
-						className="logo"
-						alt="Vite logo"
-					/>
-				</a>
-				<a
-					href="https://react.dev"
-					target="_blank">
-					<img
-						src={reactLogo}
-						className="logo react"
-						alt="React logo"
-					/>
-				</a>
-			</div>
-			<h1>Vite + React</h1>
-			<div className="card">
-				<button onClick={() => setCount((count) => count + 1)}>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className="read-the-docs">
-				Click on the Vite and React logos to learn more
-			</p>
-		</>
+		<div className={`main-container theme-${colorScheme}`}>
+			<BrowserRouter basename="/">
+				<Header
+					colorScheme={colorScheme}
+					colorSchemeFn={toggleColorScheme}
+				/>
+				<Jobs />
+			</BrowserRouter>
+		</div>
 	);
 }
 

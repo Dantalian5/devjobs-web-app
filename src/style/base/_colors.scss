@@ -1,0 +1,21 @@
+:root {
+	--c-accent: #5964e0;
+	--c-secondary: #6e8098;
+	--c-light-accent: #939bf4;
+	// --c-gray: #9daec2;
+	// --c-midnight: #121721;
+}
+.theme-light {
+	--c-primary: #19202d;
+	--bkg-primary: #f4f6f8;
+	--bkg-secondary: #ffffff;
+	--c-filter: #6e8098;
+	--c-body-info: #6e8098;
+}
+.theme-dark {
+	--c-primary: #ffffff;
+	--bkg-primary: #121721;
+	--bkg-secondary: #19202d;
+	--c-filter: #fff;
+	--c-body-info: #9daec2;
+}

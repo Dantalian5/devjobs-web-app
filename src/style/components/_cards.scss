@@ -1,0 +1,150 @@
+.card-job {
+	padding-inline: 2rem;
+	padding-block: 0rem 2.25rem;
+	border-radius: 6px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	background: var(--bkg-secondary);
+	position: relative;
+
+	&.centered {
+		align-items: center;
+	}
+	&__logo {
+		width: 3.125rem;
+		height: 3.125rem;
+		border-radius: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		transform: translateY(-50%);
+		&__img {
+			max-width: 80%;
+			width: auto;
+		}
+	}
+	&__title {
+		color: var(--c-primary);
+	}
+	&__body {
+		color: var(--c-secondary);
+		& > span {
+			margin-inline: 0.5rem;
+		}
+	}
+	&__location {
+		color: var(--c-accent);
+		margin-top: auto;
+		padding-top: 0.75rem;
+	}
+}
+.card-info-job,
+.card-info {
+	max-width: 45.625rem;
+	margin-inline: auto;
+}
+.card-info-job {
+	padding-inline: 2rem;
+	padding-block: 0rem 2.25rem;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	background: var(--bkg-secondary);
+	position: relative;
+	align-items: center;
+	&__logo {
+		width: 3.125rem;
+		height: 3.125rem;
+		border-radius: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		transform: translateY(-50%);
+		&__img {
+			max-width: 80%;
+			width: auto;
+		}
+	}
+	&__info {
+		display: flex;
+		flex-grow: 1;
+		flex-direction: column;
+		align-items: center;
+		gap: 27px;
+	}
+	&__id {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+	}
+}
+.card-info {
+	padding-inline: 1.5rem;
+	padding-block: 2.5rem;
+	margin-bottom: 4rem;
+	border-radius: 6px;
+	background: var(--bkg-secondary);
+	margin-top: 1.5rem;
+	&__header-wrapper {
+		display: flex;
+		width: 100%;
+		flex-direction: column;
+		gap: 3.375rem;
+		margin-bottom: 1rem;
+	}
+	&__header {
+		&-title {
+			margin-block: 0.75rem;
+			color: var(--c-primary);
+		}
+		&-location {
+			color: var(--c-accent);
+		}
+	}
+	&__wrapper {
+		&-title {
+			padding-block: 1.5rem 0.75rem;
+			color: var(--c-primary);
+		}
+		&-body {
+			color: var(--c-body-info);
+			&:not(:last-child) {
+				padding-block: 1rem;
+			}
+		}
+	}
+}
+.card-list {
+	counter-reset: items;
+	&__item {
+		counter-increment: items;
+		display: flex;
+		width: 100%;
+		gap: 2rem;
+		&::before {
+			content: '\2022';
+			font-family: inherit;
+			font-size: 1em;
+			color: var(--c-accent);
+		}
+		&.number::before {
+			content: counter(items);
+		}
+		&:not(:last-child) {
+			margin-bottom: 0.5rem;
+		}
+	}
+	&--numbered {
+		& .card-list__item {
+			&::before {
+				content: counter(items);
+			}
+		}
+	}
+}

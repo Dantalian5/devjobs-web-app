@@ -1,0 +1,20 @@
+:root {
+	--inner-padding: max(1.5rem, 6%);
+}
+.main-container {
+	width: 100%;
+	min-width: 20rem;
+	min-height: 100svh;
+	background: var(--bkg-primary);
+	position: relative;
+}
+img {
+	width: 100%;
+	max-width: 100%;
+}
+.main-logo {
+	width: 7.1875rem;
+}
+.error-msj {
+	padding: 2rem;
+}

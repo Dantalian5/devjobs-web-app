@@ -1,0 +1,41 @@
+.l-jobs {
+	&__list {
+		padding-inline: var(--inner-padding);
+		padding-bottom: 4rem;
+	}
+	&__info {
+		padding-inline: var(--inner-padding);
+		padding-top: 1.5rem;
+	}
+	&__load-more {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+	}
+	&__footer {
+		padding-block: 1.5rem;
+		padding-inline: var(--inner-padding);
+		background: var(--bkg-secondary);
+
+		&__wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			max-width: 45.625rem;
+			margin-inline: auto;
+		}
+		&__info {
+			display: none;
+		}
+		&__title {
+			color: var(--c-primary);
+		}
+		&__subtitle {
+			color: var(--c-body-info);
+		}
+	}
+}
+.l-foot {
+	padding: 1.5rem;
+	background: var(--bkg-secondary);
+}
