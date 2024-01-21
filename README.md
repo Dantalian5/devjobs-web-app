@@ -40,7 +40,7 @@
     <a href="https://github.com/Dantalian5/devjobs-web-app"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Dantalian5/devjobs-web-app">View Live Demo</a>
+    <a href="https://devjobs-web-app-five.vercel.app/">View Live Demo</a>
     ·
     <a href="https://github.com/Dantalian5/devjobs-web-app/issues">Report Bug</a>
   </p>
