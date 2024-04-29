@@ -1,11 +1,7 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '@/components/Button';
 import {svgCheck, svgSearch, svgLocation, svgFilter} from '@/utils/SvgIcon';
-type FilterObj = {
-	title: string;
-	location: string;
-	time: boolean;
-};
+import {FilterObj} from "@/type/jobs";
 
 const handleBoxClick = (e: any) => {
 	e.stopPropagation();
@@ -19,13 +15,13 @@ function Filter({action}: any) {
 	});
 	const [showOverlay, setShowOverlay] = useState<boolean>(false);
 
-	function handleFocus(event: any) {
+	function handleFocus(event: React.ChangeEvent<HTMLInputElement>) {
 		event.target.classList.add('focus');
 	}
-	function handleBlur(event: any) {
+	function handleBlur(event: React.ChangeEvent<HTMLInputElement>) {
 		event.target.value === '' && event.target.classList.remove('focus');
 	}
-	function onSubmit(event: any) {
+	function onSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		action(input);
 	}
@@ -124,11 +120,15 @@ function Filter({action}: any) {
 			</div>
 			<div className="filter__btn-section">
 				<button
+					name="filter job spots"
+					aria-label="filter job spots"
 					className="btn-filter"
 					onClick={() => setShowOverlay(true)}>
 					{svgFilter}
 				</button>
 				<button
+					name="search job spots"
+					aria-label="search job spots"
 					className="btn-search"
 					type="submit">
 					{svgSearch}
