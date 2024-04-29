@@ -1,7 +1,7 @@
-import {useEffect, useState} from 'react';
-import {BrowserRouter} from 'react-router-dom';
-import Header from '@/components/Header';
-import Jobs from '@/components/Jobs';
+import { useEffect, useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import Header from "@/components/Header";
+import PublicRoutes from "@/routes/public.routes.tsx";
 
 type Theme = 'dark' | 'light';
 
@@ -9,7 +9,7 @@ function App() {
 	const [colorScheme, setColorScheme] = useState<Theme>('light');
 	useEffect(() => {
 		setColorScheme(() => {
-			let localScheme = localStorage.getItem('colorScheme');
+			const localScheme = localStorage.getItem('colorScheme');
 
 			switch (localScheme) {
 				case 'light':
@@ -24,7 +24,7 @@ function App() {
 		});
 	}, []);
 	function toggleColorScheme() {
-		let newColor: Theme = colorScheme === 'light' ? 'dark' : 'light';
+		const newColor: Theme = colorScheme === 'light' ? 'dark' : 'light';
 		localStorage.setItem('colorScheme', newColor);
 		setColorScheme(newColor);
 	}
@@ -36,7 +36,7 @@ function App() {
 					colorScheme={colorScheme}
 					colorSchemeFn={toggleColorScheme}
 				/>
-				<Jobs />
+				<PublicRoutes/>
 			</BrowserRouter>
 		</div>
 	);
