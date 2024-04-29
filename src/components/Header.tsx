@@ -8,7 +8,7 @@ interface Header {
 function Header({colorScheme, colorSchemeFn}: Header) {
 	return (
 		<header className="header header--bkg">
-			<Link to="/">
+			<Link aria-label="dev-jobs logo" to="/">
 				<div className="main-logo">{svgLogo}</div>
 			</Link>
 			<div className="theme-toggler">

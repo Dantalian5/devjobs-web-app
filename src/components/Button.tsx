@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 interface Button {
 	action?: any;
 	text: string;
@@ -19,12 +21,12 @@ function Button({
 	return (
 		<>
 			{linked ? (
-				<a
+				<Link
 					className={buttonClass}
-					href={link}
-					target="_blank">
+					target="_blank"
+					to={link}>
 					{text}
-				</a>
+				</Link>
 			) : (
 				<button
 					className={buttonClass}
@@ -37,3 +39,7 @@ function Button({
 }
 
 export default Button;
+//
+// - camelCase at function names
+//
+// - absense of h1
