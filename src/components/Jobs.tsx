@@ -1,21 +1,17 @@
-import {collection, getDocs} from 'firebase/firestore';
-import {useState, useEffect} from 'react';
-import {Route, Routes, useLocation} from 'react-router-dom';
-import Filter from '@/components/Filter';
-import Button from '@/components/Button';
-import JobCard from '@/components/JobCard';
-import JobInfo from '@/components/JobInfo';
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import Filter from "@/components/Filter";
+import Button from "@/components/Button";
+import JobCard from "@/components/JobCard";
 // import { fetchData } from '@/utils/fetchData';
-import {db} from '@/firebase';
+import { db } from "@/firebase";
+import {FilterObj, Job} from "@/type/jobs";
 
 type Status = {status: 'success' | 'error'; message: string};
-type FilterObj = {
-	title: string;
-	location: string;
-	time: boolean;
-};
+
 function Jobs() {
-	const [jobs, setJobs] = useState<any>([]);
+	const [jobs, setJobs] = useState<Job[]>([]);
 	const [filter, setFilter] = useState<FilterObj>({
 		title: '',
 		location: '',
@@ -38,7 +34,7 @@ function Jobs() {
 					dataFromServer.forEach((doc) => {
 						data.push(doc.data());
 					});
-					setJobs(data.map((item: any) => ({...item, display: true})));
+					setJobs(data.map((item: Job[]) => ({...item, display: true})));
 					setServerState({status: 'success', message: ''});
 				} catch (error) {
 					setServerState({
@@ -77,7 +73,7 @@ function Jobs() {
 	}, [pathname]);
 
 	useEffect(() => {
-		let newJobsList = jobs.map((job: any) => {
+		const newJobsList = jobs.map((job: Job) => {
 			let displayItem;
 			let isInTime;
 			if (filter.time) {
@@ -124,35 +120,26 @@ function Jobs() {
 
 	return (
 		<main className="l-jobs">
-			<Routes>
-				<Route
-					path="/"
-					element={
-						<div className="l-jobs__list">
-							<Filter action={setFilter} />
-							{serverState.status === 'success' ? (
-								<div className="grid-jobs">{jobList}</div>
-							) : (
-								<div className="error-msj">
-									<p className="f-h4">{serverState.message}</p>
-								</div>
-							)}
-							<div className="l-jobs__load-more">
-								<Button
-									text={isLoading ? 'Loading...' : 'Load More'}
-									action={loadMore}
-									type="cta"
-									size="static"
-								/>
-							</div>
+				<div className="l-jobs__list">
+					<Filter action={setFilter}/>
+					{serverState.status === 'success' ? (
+						<div className="grid-jobs">{jobList}</div>
+					) : (
+						<div className="error-msj">
+							<p className="f-h4">{serverState.message}</p>
 						</div>
-					}
-				/>
-				<Route
-					path="/job/:id"
-					element={<JobInfo />}
-				/>
-			</Routes>
+					)}
+					<div className="l-jobs__load-more">
+						<Button
+							text={isLoading ? 'Loading...' : 'Load More'}
+							action={loadMore}
+							type="cta"
+							size="static"
+						/>
+					</div>
+				</div>
+
+
 		</main>
 	);
 }
