@@ -6,10 +6,12 @@
   gap: 1rem;
   color: var(--c-primary);
   position: relative;
+
   &__wrapper {
     position: relative;
     flex: 1 1 auto;
   }
+
   &__label {
     opacity: 0.5;
     position: absolute;
@@ -19,6 +21,7 @@
     transition: top 0.2s;
     z-index: 1;
   }
+
   &__input {
     position: relative;
     z-index: 2;
@@ -27,10 +30,11 @@
     color: inherit;
     height: 100%;
   }
-  &__input.focus ~ .input__label {
+
+  .input__label {
     top: -1em;
-    font-size: 0.8em;
   }
+
   &__check {
     flex: 0 0 auto;
     width: 1.5rem;
@@ -41,20 +45,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     & > .svg-icon {
       visibility: hidden;
     }
   }
+
   &__checkbox {
-    visibility: hidden;
-    position: absolute;
-    &:checked {
-      & ~ .input__check {
-        background-color: var(--c-accent);
-        opacity: 1;
-        & > .svg-icon {
-          visibility: visible;
-        }
+    outline: 1px solid var(--c-light-accent);
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:focus {
+      outline: 4px solid var(--c-light-accent);
+    }
+
+    &[aria-checked="true"] {
+      background-color: var(--c-accent);
+      opacity: 1;
+
+      & > .svg-icon {
+        visibility: visible;
       }
     }
   }
