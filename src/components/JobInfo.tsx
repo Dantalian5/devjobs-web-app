@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import Button from "@/components/Button";
 import { svgDot } from "@/utils/SvgIcon";
 import { Job } from "@/type/jobs";
+import { nanoid } from "nanoid";
 
 function JobInfo() {
   const job: Job = useLocation().state;
@@ -13,7 +14,6 @@ function JobInfo() {
     company,
     postedAt,
     contract,
-    id,
     website,
     requirements,
     role,
@@ -38,10 +38,10 @@ function JobInfo() {
             </div>
             <Button
               text={"Company Site"}
-              type={"link"}
               size={"static"}
               linked={true}
               link={website}
+              isLink={true}
             />
           </div>
         </div>
@@ -60,9 +60,9 @@ function JobInfo() {
             <Button
               text="Apply Now"
               size="flex"
-              type="cta"
               linked={true}
               link={apply}
+              isLink={true}
             />
           </div>
 
@@ -74,7 +74,7 @@ function JobInfo() {
             </p>
             <ul className="f-body card-info__wrapper-body card-list">
               {requirements.items.map((item: string) => (
-                <li className="card-list__item" key={id}>
+                <li className="card-list__item" key={nanoid()}>
                   <p>{item}</p>
                 </li>
               ))}
@@ -83,7 +83,7 @@ function JobInfo() {
             <p className="f-body card-info__wrapper-body ">{role.content}</p>
             <ul className="f-body card-info__wrapper-body card-list card-list--numbered">
               {role.items.map((item: string) => (
-                <li className="card-list__item" key={id}>
+                <li className="card-list__item" key={nanoid()}>
                   <p>{item}</p>
                 </li>
               ))}
@@ -100,9 +100,9 @@ function JobInfo() {
           <Button
             text="Apply Now"
             size="flex"
-            type="cta"
             linked={true}
             link={apply}
+            isLink={true}
           />
         </div>
       </footer>

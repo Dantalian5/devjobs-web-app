@@ -17,14 +17,14 @@
     padding-inline: clamp(0.875rem, 3.5%, 1.75rem);
     width: 100%;
   }
-  &.cta {
+  &.false {
     background-color: var(--c-accent);
     color: #fff;
     &:hover {
       background-color: var(--c-light-accent);
     }
   }
-  &.link {
+  &.true {
     background-color: rgb(from var(--c-accent) r g b / 0.1);
     color: var(--c-accent);
     &:hover {
