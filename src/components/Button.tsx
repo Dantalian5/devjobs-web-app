@@ -1,22 +1,24 @@
 import { Link } from "react-router-dom";
+import React from "react";
 
-interface Button {
-  action?: any;
+interface Button extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  handleClick?: any;
   text: string;
-  type: "cta" | "link";
   size: "small" | "static" | "flex";
   linked?: boolean;
   link?: string;
+  isLink: boolean;
 }
+
 function Button({
-  text = "Button",
-  action,
-  type = "cta",
+  text,
+  isLink = true,
   size = "static",
+  handleClick,
   linked = false,
   link = "",
 }: Button) {
-  const buttonClass = `f-h3 btn ${type} ${size}`;
+  const buttonClass = `f-h3 btn ${isLink} ${size}`;
 
   return (
     <>
@@ -25,7 +27,7 @@ function Button({
           {text}
         </Link>
       ) : (
-        <button className={buttonClass} onClick={action}>
+        <button className={buttonClass} onClick={handleClick}>
           {text}
         </button>
       )}
