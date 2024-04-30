@@ -1,124 +1,83 @@
-import React, { useEffect, useState } from "react";
+import * as Checkbox from "@radix-ui/react-checkbox";
 import Button from "@/components/Button";
-import { svgCheck, svgSearch, svgLocation, svgFilter } from "@/utils/SvgIcon";
+import { svgCheck, svgLocation, svgSearch } from "@/utils/SvgIcon";
+import { useForm } from "react-hook-form";
 import { FilterObj } from "@/type/jobs";
+import { useJobsStore } from "@/store/jobs.store.ts";
 
-const handleBoxClick = (e: any) => {
-  e.stopPropagation();
-};
+function Filter() {
+  const { input, setInput } = useJobsStore();
 
-function Filter({ action }: any) {
-  const [input, setInput] = useState<FilterObj>({
-    title: "",
-    location: "",
-    time: false,
-  });
-  const [showOverlay, setShowOverlay] = useState<boolean>(false);
-
-  function handleFocus(event: React.ChangeEvent<HTMLInputElement>) {
-    event.target.classList.add("focus");
-  }
-  function handleBlur(event: React.ChangeEvent<HTMLInputElement>) {
-    event.target.value === "" && event.target.classList.remove("focus");
-  }
-  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    action(input);
-  }
-  function onCheck() {
-    setInput((prev) => ({ ...prev, time: !prev.time }));
-  }
-  useEffect(() => {
-    action(input);
-  }, [input.time]);
-  const handleOverlayClick = () => {
-    setShowOverlay(false);
+  const { register, handleSubmit } = useForm<FilterObj>();
+  const submit = (formData: FilterObj): void => {
+    setInput(formData);
   };
+
   return (
-    <form className="filter" onSubmit={onSubmit}>
+    <form className="filter" onSubmit={handleSubmit(submit)}>
       <div className="filter__title-section">
         <div className="input">
           <div className="input__icon filter__search-icon">{svgSearch}</div>
           <div className="input__wrapper f-body">
             <input
               className="input__input"
-              id="finderInput"
+              id="title"
               type="text"
-              value={input.title}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              onChange={(e) =>
-                setInput((prev) => ({ ...prev, title: e.target.value }))
+              {...register("title")}
+              onChange={(event) =>
+                setInput({ ...input, title: event.target.value })
               }
             />
-            <label className={"input__label"} htmlFor="finderInput">
-              Filter by title…
+            <label className={"input__label"} htmlFor="title">
+              Filter by title:
             </label>
           </div>
         </div>
       </div>
-      <div
-        className={`filter__extras-section ${showOverlay && "overlay-active"}`}
-        onClick={handleOverlayClick}
-      >
-        <div className="extras-section" onClick={handleBoxClick}>
+      <div className={`filter__extras-section overlay-active`}>
+        <div className="extras-section">
           <div className="extras-section__separator inner-sep"></div>
           <div className="input extras-section__location">
             <div className="input__icon">{svgLocation}</div>
             <div className="input__wrapper f-body">
               <input
                 className="input__input "
-                id="finderInputLocation"
+                id="location"
                 type="text"
-                value={input.location}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                onChange={(e) =>
-                  setInput((prev) => ({ ...prev, location: e.target.value }))
+                {...register("location")}
+                onChange={(event) =>
+                  setInput({ ...input, location: event.target.value })
                 }
               />
-              <label className={"input__label"} htmlFor="finderInputLocation">
-                Filter by location…
+              <label className={"input__label"} htmlFor="location">
+                Filter by location:
               </label>
             </div>
           </div>
           <div className="extras-section__separator"></div>
           <div className="input extras-section__full-time">
-            <input
-              type="checkbox"
-              id="inputTime"
-              name="inputTime"
+            <Checkbox.Root
+              {...register("time")}
+              id="time"
+              name="time"
               className="input__checkbox"
-              checked={input.time}
-              onChange={onCheck}
-            />
-            <div className="input__check" onClick={onCheck}>
-              {svgCheck}
-            </div>
-            <label htmlFor="inputTime" className="input__label-check f-h3">
-              Full Time <span> Only</span>
+            >
+              <Checkbox.CheckboxIndicator>
+                {svgCheck}
+              </Checkbox.CheckboxIndicator>
+            </Checkbox.Root>
+            <label htmlFor="time" className="input__label-check f-h3">
+              Full Time Only
             </label>
           </div>
-          <Button action={onSubmit} text="Search" type="cta" size="flex" />
+          <Button
+            isLink={false}
+            onClick={handleSubmit(submit)}
+            text="Search"
+            type="submit"
+            size="flex"
+          />
         </div>
-      </div>
-      <div className="filter__btn-section">
-        <button
-          name="filter job spots"
-          aria-label="filter job spots"
-          className="btn-filter"
-          onClick={() => setShowOverlay(true)}
-        >
-          {svgFilter}
-        </button>
-        <button
-          name="search job spots"
-          aria-label="search job spots"
-          className="btn-search"
-          type="submit"
-        >
-          {svgSearch}
-        </button>
       </div>
     </form>
   );
