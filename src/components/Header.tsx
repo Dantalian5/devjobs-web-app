@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
 import { svgLogo } from "@/utils/SvgIcon";
+import {useThemeStore} from "@/store/color.store.ts";
 
-interface Header {
-  colorScheme: "dark" | "light";
-  colorSchemeFn: () => void;
-}
-function Header({ colorScheme, colorSchemeFn }: Header) {
+function Header() {
+    const {color, toggleColorTheme} = useThemeStore()
   return (
     <header className="header header--bkg">
       <Link aria-label="dev-jobs logo" to="/">
@@ -19,9 +17,9 @@ function Header({ colorScheme, colorSchemeFn }: Header) {
         />
         <button
           className={`btn-theme-togler ${
-            colorScheme === "light" ? "light" : "dark"
+            color === "light" ? "light" : "dark"
           }`}
-          onClick={colorSchemeFn}
+          onClick={toggleColorTheme}
           title="Change Color Theme"
         ></button>
         <img
