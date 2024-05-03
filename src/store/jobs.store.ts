@@ -2,54 +2,20 @@ import { create } from "zustand";
 import { FilterObj, Job } from "@/type/jobs";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase.ts";
+import {
+  CombinedJobs,
+  ServerStore,
+} from "@/type/store";
 
-type LoadingStore = {
-  isLoading: boolean;
-  setIsLoading: (value: boolean) => void;
-};
-
-type JobsStore = {
-  jobs: Job[];
-  setJobs: (newJobs: Job[]) => void;
-};
-type InputStore = {
-  input: FilterObj;
-  setInput: (updatedInput: FilterObj) => void;
-};
-const filterInitialState: FilterObj = {
+export const filterInitialState: FilterObj = {
   title: "",
   location: "",
   time: false,
 };
-type ServerStore = {
-  status: string;
-  message: string;
-};
-type ServerState = {
-  serverState: ServerStore;
-  setServerState: (updatedState: ServerStore) => void;
-};
-
-type GetJobs = { getJobs: () => Promise<void> };
-type Load = { loadMore: () => void };
-
-type Count = {
-  count: number;
-  setCount: (fn: (prev: number) => number) => void;
-};
-
-interface CombinedJobs
-  extends JobsStore,
-    InputStore,
-    ServerState,
-    LoadingStore,
-    GetJobs,
-    Count,
-    Load {}
 
 const initialState: ServerStore = { status: "success", message: "" };
 
-export const useJobsStore = create<CombinedJobs>((set) => ({
+export const useJobsStore = create<CombinedJobs>((set, get) => ({
   count: 12,
   setCount: (fn: (prev: number) => number) =>
     set((state) => ({ count: fn(state.count) })),
@@ -67,7 +33,8 @@ export const useJobsStore = create<CombinedJobs>((set) => ({
   setServerState: (value: ServerStore) => set({ serverState: value }),
 
   getJobs: async function (): Promise<void> {
-    this.setIsLoading(true);
+    set({ isLoading: true });
+
     //const dataFromServer = await fetchData();
     if (navigator.onLine) {
       try {
@@ -76,32 +43,39 @@ export const useJobsStore = create<CombinedJobs>((set) => ({
         dataFromServer.forEach((doc) => {
           data.push(doc.data());
         });
-        this.setJobs(data.map((item: Job[]) => ({ ...item, display: true })));
-        this.setServerState(initialState);
+        set({
+          jobs: data.map((item: Job[]) => ({ ...item, display: true })),
+          serverState: initialState,
+        });
       } catch (error) {
-        this.setServerState({
-          status: "error",
-          message:
-            "Ups...there was an error, please, reload the page to try again",
+        set({
+          serverState: {
+            status: "error",
+            message:
+              "Ups...there was an error, please, reload the page to try again",
+          },
         });
       }
     } else {
-      this.setServerState({
-        status: "error",
-        message: "Ups...please check your internet :(",
+      set({
+        serverState: {
+          status: "error",
+          message: "Ups...please check your internet :(",
+        },
       });
     }
-    this.setIsLoading(false);
+    set({ isLoading: false });
   },
 
   loadMore: function (): void {
-    this.setIsLoading(true);
-    setTimeout(() => {
-      this.setCount((prev: number): number =>
-        prev < this.jobs.length ? prev + 12 : prev,
-      );
+    const { jobs, setCount } = get();
+    set({ isLoading: true });
 
-      this.setIsLoading(false);
+    setTimeout(() => {
+      setCount((prev: number): number =>
+        prev < jobs.length ? prev + 12 : prev,
+      );
+      set({ isLoading: false });
     }, 1000);
   },
-}));
+}))
