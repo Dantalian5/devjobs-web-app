@@ -1,4 +1,6 @@
-export const svgFilter: any = (
+import React from "react";
+
+export const svgFilter: React.ReactNode = (
   <svg
     width="1em"
     height="1em"
@@ -12,7 +14,7 @@ export const svgFilter: any = (
     />
   </svg>
 );
-export const svgLocation: any = (
+export const svgLocation: React.ReactNode = (
   <svg
     className="svg-icon"
     width="17"
@@ -27,7 +29,7 @@ export const svgLocation: any = (
     />
   </svg>
 );
-export const svgSearch: any = (
+export const svgSearch: React.ReactNode = (
   <svg
     width="1em"
     height="1em"
@@ -41,7 +43,7 @@ export const svgSearch: any = (
     />
   </svg>
 );
-export const svgCheck: any = (
+export const svgCheck: React.ReactNode = (
   <svg
     className="svg-icon"
     width="15"
