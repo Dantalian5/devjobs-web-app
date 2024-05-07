@@ -1,41 +1,41 @@
 @font-face {
-	font-family: 'kumbh';
-	src: url(/fonts/KumbhSans-Bold.ttf);
-	font-weight: 700;
-	font-display: swap;
+  font-family: "kumbh";
+  src: url(/fonts/KumbhSans-Bold.ttf);
+  font-weight: 700;
+  font-display: swap;
 }
 @font-face {
-	font-family: 'kumbh';
-	src: url(/fonts/KumbhSans-Regular.ttf);
-	font-weight: 400;
-	font-display: swap;
+  font-family: "kumbh";
+  src: url(/fonts/KumbhSans-Regular.ttf);
+  font-weight: 400;
+  font-display: swap;
 }
 .f-h1,
 .f-h2,
 .f-h3,
 .f-h4,
 .f-body {
-	font-family: 'kumbh', sans-serif;
-	line-height: 1.2;
-	font-style: normal;
+  font-family: "kumbh", sans-serif;
+  line-height: 1.2;
+  font-style: normal;
 }
 .f--center {
-	text-align: center;
+  text-align: center;
 }
 .f-h1,
 .f-h2 {
-	font-size: 20px;
-	font-weight: 700;
+  font-size: 20px;
+  font-weight: 700;
 }
 .f-h3 {
-	font-size: 16px;
-	font-weight: 700;
+  font-size: 16px;
+  font-weight: 700;
 }
 .f-h4 {
-	font-size: 14px;
-	font-weight: 700;
+  font-size: 14px;
+  font-weight: 700;
 }
 .f-body {
-	font-size: 16px;
-	font-weight: 400;
+  font-size: 16px;
+  font-weight: 400;
 }
