@@ -23,15 +23,10 @@ ignore-folder
 *.njsproj
 *.sln
 *.sw?
-# Avoid accidental Sketch file upload 
+
 ###############################################
-## Please do not remove line 5 - thanks! 🙂 ##
+## Avoid design files 🙂 ##
 ###############################################
 *.sketch
-
-# Avoid accidental XD or Figma upload if you convert the design file
-#######################################################
-## Please do not remove lines 11 and 12 - thanks! 🙂 ##
-#######################################################
 *.xd
 *.fig
