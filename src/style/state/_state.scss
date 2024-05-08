@@ -1,126 +1,126 @@
 @media (min-width: 37.5rem) {
-	.header {
-		padding-block: 3rem;
-		&--bkg::before {
-			background-image: url(/assets/tablet/bg-pattern-header.svg);
-			border-bottom-left-radius: 6.25rem;
-		}
-	}
-	.l-jobs__info {
-		padding-top: 0;
-	}
-	.grid-jobs {
-		row-gap: 4.0625rem;
-	}
-	.card-info-job {
-		padding: 0;
-		border-radius: 6px;
-		flex-direction: row;
-		background: var(--bkg-secondary);
-		position: relative;
-		align-items: center;
-		margin-bottom: 2rem;
-		&__logo {
-			width: 8.75rem;
-			height: 8.75rem;
-			border-radius: 0;
-			position: relative;
-			transform: none;
-			&__img {
-				width: 60%;
-			}
-		}
-		&__info {
-			padding: 2.625rem 2.5rem;
-			flex-direction: row;
-			justify-content: space-between;
-		}
-		&__id {
-			align-items: flex-start;
-		}
-	}
-	.card-info {
-		padding: 3rem;
-		&__header-wrapper {
-			flex-direction: row;
-			align-items: center;
-			justify-content: space-between;
-			margin-bottom: 2.75rem;
-		}
-	}
-	.btn {
-		&.flex {
-			width: fit-content;
-		}
-	}
-	.l-jobs__footer {
-		justify-content: space-between;
-		&__info {
-			display: flex;
-			flex-direction: column;
-			gap: 0.75rem;
-		}
-	}
+  .header {
+    padding-block: 3rem;
+    &--bkg::before {
+      background-image: url(/assets/tablet/bg-pattern-header.svg);
+      border-bottom-left-radius: 6.25rem;
+    }
+  }
+  .l-jobs__info {
+    padding-top: 0;
+  }
+  .grid-jobs {
+    row-gap: 4.0625rem;
+  }
+  .card-info-job {
+    padding: 0;
+    border-radius: 6px;
+    flex-direction: row;
+    background: var(--bkg-secondary);
+    position: relative;
+    align-items: center;
+    margin-bottom: 2rem;
+    &__logo {
+      width: 8.75rem;
+      height: 8.75rem;
+      border-radius: 0;
+      position: relative;
+      transform: none;
+      &__img {
+        width: 60%;
+      }
+    }
+    &__info {
+      padding: 2.625rem 2.5rem;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &__id {
+      align-items: flex-start;
+    }
+  }
+  .card-info {
+    padding: 3rem;
+    &__header-wrapper {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2.75rem;
+    }
+  }
+  .btn {
+    &.flex {
+      width: fit-content;
+    }
+  }
+  .l-jobs__footer {
+    justify-content: space-between;
+    &__info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
 }
 @media (min-width: 46.875rem) {
-	.filter {
-		padding-block: 0;
-		&__extras-section {
-			display: flex;
-			max-width: 31.25rem;
-			position: static;
-			padding: 0;
-			background: none;
-		}
-		&__btn-section {
-			display: none;
-		}
-		&__search-icon {
-			display: block;
-		}
-	}
-	.input__label-check > span {
-		display: none;
-	}
-	.extras-section {
-		flex-direction: row;
-		padding: 0;
-		align-items: center;
-		max-width: none;
-		&__separator {
-			display: block;
-			width: 0px;
-			height: 5rem;
-			&.inner-sep {
-				display: block;
-			}
-			&::before {
-				inset: 0;
-			}
-		}
-	}
+  .filter {
+    padding-block: 0;
+    &__extras-section {
+      display: flex;
+      max-width: 31.25rem;
+      position: static;
+      padding: 0;
+      background: none;
+    }
+    &__btn-section {
+      display: none;
+    }
+    &__search-icon {
+      display: block;
+    }
+  }
+  .input__label-check > span {
+    display: none;
+  }
+  .extras-section {
+    flex-direction: row;
+    padding: 0;
+    align-items: center;
+    max-width: none;
+    &__separator {
+      display: block;
+      width: 0px;
+      height: 5rem;
+      &.inner-sep {
+        display: block;
+      }
+      &::before {
+        inset: 0;
+      }
+    }
+  }
 }
 @media (min-width: 62.5rem) {
-	:root {
-		--inner-padding: min(10.3125rem, 11.5%);
-	}
-	.header {
-		&--bkg::before {
-			background-image: url(/assets/desktop/bg-pattern-header.svg);
-		}
-	}
-	.grid-jobs {
-		column-gap: 1.875rem;
-	}
-	.filter {
-		&__extras-section {
-			max-width: 40.625rem;
-		}
-	}
-	.input__label-check > span {
-		display: inline;
-	}
-	.btn.flex {
-		padding-inline: 2rem;
-	}
+  :root {
+    --inner-padding: min(10.3125rem, 11.5%);
+  }
+  .header {
+    &--bkg::before {
+      background-image: url(/assets/desktop/bg-pattern-header.svg);
+    }
+  }
+  .grid-jobs {
+    column-gap: 1.875rem;
+  }
+  .filter {
+    &__extras-section {
+      max-width: 40.625rem;
+    }
+  }
+  .input__label-check > span {
+    display: inline;
+  }
+  .btn.flex {
+    padding-inline: 2rem;
+  }
 }

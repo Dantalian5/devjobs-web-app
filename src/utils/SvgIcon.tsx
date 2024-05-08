@@ -11,7 +11,7 @@ export const svgFilter: React.ReactNode = (
       fillRule='nonzero'
     />
   </svg>
-)
+);
 export const svgLocation: React.ReactNode = (
   <svg
     className='svg-icon'
@@ -26,7 +26,7 @@ export const svgLocation: React.ReactNode = (
       fillRule='nonzero'
     />
   </svg>
-)
+);
 export const svgSearch: React.ReactNode = (
   <svg
     width='1em'
@@ -40,7 +40,7 @@ export const svgSearch: React.ReactNode = (
       fillRule='nonzero'
     />
   </svg>
-)
+);
 export const svgCheck: React.ReactNode = (
   <svg
     className='svg-icon'
@@ -57,7 +57,7 @@ export const svgCheck: React.ReactNode = (
       fillRule='evenodd'
     />
   </svg>
-)
+);
 export const svgDot: React.ReactNode = (
   <svg
     xmlns='http://www.w3.org/2000/svg'
@@ -68,7 +68,7 @@ export const svgDot: React.ReactNode = (
   >
     <circle cx='2' cy='2' r='2' fill='currentColor' />
   </svg>
-)
+);
 export const svgLogo: React.ReactNode = (
   <svg
     xmlns='http://www.w3.org/2000/svg'
@@ -90,4 +90,4 @@ export const svgLogo: React.ReactNode = (
       fill='#fff'
     />
   </svg>
-)
+);

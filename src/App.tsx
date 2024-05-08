@@ -1,32 +1,34 @@
-import { useEffect, useState } from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import Header from '@/components/Header'
-import Jobs from '@/components/Jobs'
+import { useEffect, useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Header from '@/components/Header';
+import Jobs from '@/components/Jobs';
 
-type Theme = 'dark' | 'light'
+import { useColorSchemeStore } from '@/store/colorScheme.store';
+
+type Theme = 'dark' | 'light';
 
 function App() {
-  const [colorScheme, setColorScheme] = useState<Theme>('light')
+  const [colorScheme, setColorScheme] = useState<Theme>('light');
   useEffect(() => {
     setColorScheme(() => {
-      let localScheme = localStorage.getItem('colorScheme')
+      const localScheme = localStorage.getItem('colorScheme');
 
       switch (localScheme) {
         case 'light':
-          return 'light'
+          return 'light';
         case 'dark':
-          return 'dark'
+          return 'dark';
         default:
           return window.matchMedia('(prefers-color-scheme: dark)').matches
             ? 'dark'
-            : 'light'
+            : 'light';
       }
-    })
-  }, [])
+    });
+  }, []);
   function toggleColorScheme() {
-    let newColor: Theme = colorScheme === 'light' ? 'dark' : 'light'
-    localStorage.setItem('colorScheme', newColor)
-    setColorScheme(newColor)
+    const newColor: Theme = colorScheme === 'light' ? 'dark' : 'light';
+    localStorage.setItem('colorScheme', newColor);
+    setColorScheme(newColor);
   }
 
   return (
@@ -36,7 +38,7 @@ function App() {
         <Jobs />
       </BrowserRouter>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
