@@ -1,6 +1,4 @@
-import type { SvgIcon } from '@/types/assets'
-
-export const svgFilter: SvgIcon = () => (
+export const svgFilter: React.ReactNode = (
   <svg
     width='1em'
     height='1em'
@@ -14,7 +12,7 @@ export const svgFilter: SvgIcon = () => (
     />
   </svg>
 )
-export const svgLocation: SvgIcon = () => (
+export const svgLocation: React.ReactNode = (
   <svg
     className='svg-icon'
     width='17'
@@ -29,7 +27,7 @@ export const svgLocation: SvgIcon = () => (
     />
   </svg>
 )
-export const svgSearch: SvgIcon = () => (
+export const svgSearch: React.ReactNode = (
   <svg
     width='1em'
     height='1em'
@@ -43,7 +41,7 @@ export const svgSearch: SvgIcon = () => (
     />
   </svg>
 )
-export const svgCheck: SvgIcon = () => (
+export const svgCheck: React.ReactNode = (
   <svg
     className='svg-icon'
     width='15'
@@ -60,7 +58,7 @@ export const svgCheck: SvgIcon = () => (
     />
   </svg>
 )
-export const svgDot: SvgIcon = () => (
+export const svgDot: React.ReactNode = (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     width='4'
@@ -71,7 +69,7 @@ export const svgDot: SvgIcon = () => (
     <circle cx='2' cy='2' r='2' fill='currentColor' />
   </svg>
 )
-export const svgLogo: SvgIcon = () => (
+export const svgLogo: React.ReactNode = (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     width='115'
