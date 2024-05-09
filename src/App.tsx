@@ -4,11 +4,11 @@ import Header from '@/components/Header';
 import Jobs from '@/components/Jobs';
 
 function App() {
-  const { colorScheme, toggleColorScheme } = useColorSchemeStore();
+  const { colorScheme } = useColorSchemeStore();
   return (
     <div className={`main-container theme-${colorScheme}`}>
       <BrowserRouter basename='/'>
-        <Header colorScheme={colorScheme} colorSchemeFn={toggleColorScheme} />
+        <Header />
         <Jobs />
       </BrowserRouter>
     </div>
