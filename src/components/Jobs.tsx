@@ -54,19 +54,6 @@ function Jobs() {
         });
       }
       setIsLoading(false);
-      // const dataFromServer = await getDocs(collection(db, 'jobs'));
-      // console.log(dataFromServer);
-      // if (dataFromServer) {
-      // 	const data: any = [];
-      // 	dataFromServer.forEach((doc) => {
-      // 		data.push(doc.data());
-      // 	});
-      // 	setJobs(data.map((item: any) => ({...item, display: true})));
-      // 	setServerState('success');
-      // } else {
-      // 	setServerState('error');
-      // }
-      // setIsLoading(false);
     }
     getJobs();
   }, []);
