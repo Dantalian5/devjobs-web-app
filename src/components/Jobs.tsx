@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import Filter from '@/components/Filter';
+import Filter from '@/components/forms/Filter';
 import Button from '@/components/Button';
 import JobCard from '@/components/JobCard';
 import JobInfo from '@/components/JobInfo';
@@ -129,5 +129,3 @@ function Jobs() {
 }
 
 export default Jobs;
-
-// todo : fix firestore server get() there is a problem to solve

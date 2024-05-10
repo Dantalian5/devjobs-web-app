@@ -6,30 +6,18 @@
   gap: 1rem;
   color: var(--c-primary);
   position: relative;
-  &__wrapper {
-    position: relative;
-    flex: 1 1 auto;
-  }
-  &__label {
-    opacity: 0.5;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    transition: top 0.2s;
-    z-index: 1;
-  }
   &__input {
+    flex: 1 1 auto;
     position: relative;
     z-index: 2;
     width: 100%;
     background: none;
     color: inherit;
     height: 100%;
-  }
-  &__input.focus ~ .input__label {
-    top: -1em;
-    font-size: 0.8em;
+    &::placeholder {
+      opacity: 0.5;
+      color: var(--c-primary);
+    }
   }
   &__check {
     flex: 0 0 auto;

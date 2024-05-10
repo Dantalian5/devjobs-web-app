@@ -4,7 +4,7 @@ import { useFilterStore } from '@/store/filter.store';
 import { svgCheck, svgSearch, svgLocation, svgFilter } from '@/utils/SvgIcon';
 import type { Filter } from '@/types/filter';
 
-const handleBoxClick = (e: any) => {
+const handleBoxClick = (e: React.MouseEvent) => {
   e.stopPropagation();
 };
 
@@ -13,13 +13,13 @@ function Filter() {
   const [input, setInput] = useState<Filter>(filter);
   const [showOverlay, setShowOverlay] = useState<boolean>(false);
 
-  function handleFocus(event: React.FocusEvent) {
+  function handleFocus(event: React.FocusEvent<HTMLInputElement>) {
     event.target.classList.add('focus');
   }
-  function handleBlur(event: any) {
+  function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
     event.target.value === '' && event.target.classList.remove('focus');
   }
-  function onSubmit(event: any) {
+  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     updateFilter(input);
   }
@@ -29,6 +29,7 @@ function Filter() {
   useEffect(() => {
     updateFilter(input);
   }, [input.time]);
+
   const handleOverlayClick = () => {
     setShowOverlay(false);
   };
@@ -37,22 +38,19 @@ function Filter() {
       <div className='filter__title-section'>
         <div className='input'>
           <div className='input__icon filter__search-icon'>{svgSearch}</div>
-          <div className='input__wrapper f-body'>
-            <input
-              className='input__input'
-              id='finderInput'
-              type='text'
-              value={input.title}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              onChange={(e) =>
-                setInput((prev) => ({ ...prev, title: e.target.value }))
-              }
-            />
-            <label className={'input__label'} htmlFor='finderInput'>
-              Filter by title…
-            </label>
-          </div>
+          <input
+            className='input__input f-body'
+            id='finderInput'
+            type='text'
+            value={input.title}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onChange={(e) =>
+              setInput((prev) => ({ ...prev, title: e.target.value }))
+            }
+            aria-label='Filter by title'
+            placeholder='Filter by title...'
+          />
         </div>
       </div>
       <div
@@ -63,22 +61,19 @@ function Filter() {
           <div className='extras-section__separator inner-sep'></div>
           <div className='input extras-section__location'>
             <div className='input__icon'>{svgLocation}</div>
-            <div className='input__wrapper f-body'>
-              <input
-                className='input__input '
-                id='finderInputLocation'
-                type='text'
-                value={input.location}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                onChange={(e) =>
-                  setInput((prev) => ({ ...prev, location: e.target.value }))
-                }
-              />
-              <label className={'input__label'} htmlFor='finderInputLocation'>
-                Filter by location…
-              </label>
-            </div>
+            <input
+              className='input__input f-body'
+              id='finderInputLocation'
+              type='text'
+              value={input.location}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              onChange={(e) =>
+                setInput((prev) => ({ ...prev, location: e.target.value }))
+              }
+              aria-label='Filter by location'
+              placeholder='Filter by location...'
+            />
           </div>
           <div className='extras-section__separator'></div>
           <div className='input extras-section__full-time'>
