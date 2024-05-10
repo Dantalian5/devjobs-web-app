@@ -1,25 +1,19 @@
 import { useEffect, useState } from 'react';
 import Button from '@/components/Button';
+import { useFilterStore } from '@/store/filter.store';
 import { svgCheck, svgSearch, svgLocation, svgFilter } from '@/utils/SvgIcon';
-type FilterObj = {
-  title: string;
-  location: string;
-  time: boolean;
-};
+import type { Filter } from '@/types/filter';
 
 const handleBoxClick = (e: any) => {
   e.stopPropagation();
 };
 
-function Filter({ action }: any) {
-  const [input, setInput] = useState<FilterObj>({
-    title: '',
-    location: '',
-    time: false,
-  });
+function Filter() {
+  const { filter, updateFilter } = useFilterStore();
+  const [input, setInput] = useState<Filter>(filter);
   const [showOverlay, setShowOverlay] = useState<boolean>(false);
 
-  function handleFocus(event: any) {
+  function handleFocus(event: React.FocusEvent) {
     event.target.classList.add('focus');
   }
   function handleBlur(event: any) {
@@ -27,13 +21,13 @@ function Filter({ action }: any) {
   }
   function onSubmit(event: any) {
     event.preventDefault();
-    action(input);
+    updateFilter(input);
   }
   function onCheck() {
     setInput((prev) => ({ ...prev, time: !prev.time }));
   }
   useEffect(() => {
-    action(input);
+    updateFilter(input);
   }, [input.time]);
   const handleOverlayClick = () => {
     setShowOverlay(false);

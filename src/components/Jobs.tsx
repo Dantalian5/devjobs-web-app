@@ -1,12 +1,12 @@
-import { collection, getDocs } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Filter from '@/components/Filter';
 import Button from '@/components/Button';
 import JobCard from '@/components/JobCard';
 import JobInfo from '@/components/JobInfo';
-// import { fetchData } from '@/utils/fetchData';
-import { db } from '@/firebase';
+import { fetchDatafromFirestore } from '@/utils/fetchData';
+import { useFilterStore } from '@/store/filter.store';
+import type { Job } from '@/types/jobs';
 
 type Status = { status: 'success' | 'error'; message: string };
 type FilterObj = {
@@ -16,11 +16,7 @@ type FilterObj = {
 };
 function Jobs() {
   const [jobs, setJobs] = useState<any>([]);
-  const [filter, setFilter] = useState<FilterObj>({
-    title: '',
-    location: '',
-    time: false,
-  });
+  const { filter } = useFilterStore();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [serverState, setServerState] = useState<Status>({
     status: 'success',
@@ -33,12 +29,9 @@ function Jobs() {
       //const dataFromServer = await fetchData();
       if (navigator.onLine) {
         try {
-          const dataFromServer = await getDocs(collection(db, 'jobs'));
-          const data: any = [];
-          dataFromServer.forEach((doc) => {
-            data.push(doc.data());
-          });
-          setJobs(data.map((item: any) => ({ ...item, display: true })));
+          const data = await fetchDatafromFirestore();
+          data &&
+            setJobs(data.map((item: Job) => ({ ...item, display: true })));
           setServerState({ status: 'success', message: '' });
         } catch (error) {
           setServerState({
@@ -110,7 +103,7 @@ function Jobs() {
           path='/'
           element={
             <div className='l-jobs__list'>
-              <Filter action={setFilter} />
+              <Filter />
               {serverState.status === 'success' ? (
                 <div className='grid-jobs'>{jobList}</div>
               ) : (
