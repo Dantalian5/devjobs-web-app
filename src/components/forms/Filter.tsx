@@ -1,24 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Button from '@/components/Button';
 import { useFilterStore } from '@/store/filter.store';
 import { svgCheck, svgSearch, svgLocation, svgFilter } from '@/utils/SvgIcon';
 import type { Filter } from '@/types/filter';
-
-const handleBoxClick = (e: React.MouseEvent) => {
-  e.stopPropagation();
-};
 
 function Filter() {
   const { filter, updateFilter } = useFilterStore();
   const [input, setInput] = useState<Filter>(filter);
   const [showOverlay, setShowOverlay] = useState<boolean>(false);
 
-  function handleFocus(event: React.FocusEvent<HTMLInputElement>) {
-    event.target.classList.add('focus');
-  }
-  function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
-    event.target.value === '' && event.target.classList.remove('focus');
-  }
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     updateFilter(input);
@@ -26,13 +16,7 @@ function Filter() {
   function onCheck() {
     setInput((prev) => ({ ...prev, time: !prev.time }));
   }
-  useEffect(() => {
-    updateFilter(input);
-  }, [input.time]);
 
-  const handleOverlayClick = () => {
-    setShowOverlay(false);
-  };
   return (
     <form className='filter' onSubmit={onSubmit}>
       <div className='filter__title-section'>
@@ -43,8 +27,6 @@ function Filter() {
             id='finderInput'
             type='text'
             value={input.title}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
             onChange={(e) =>
               setInput((prev) => ({ ...prev, title: e.target.value }))
             }
@@ -55,9 +37,16 @@ function Filter() {
       </div>
       <div
         className={`filter__extras-section ${showOverlay && 'overlay-active'}`}
-        onClick={handleOverlayClick}
+        onClick={() => {
+          setShowOverlay(false);
+        }}
       >
-        <div className='extras-section' onClick={handleBoxClick}>
+        <div
+          className='extras-section'
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
           <div className='extras-section__separator inner-sep'></div>
           <div className='input extras-section__location'>
             <div className='input__icon'>{svgLocation}</div>
@@ -66,8 +55,6 @@ function Filter() {
               id='finderInputLocation'
               type='text'
               value={input.location}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
               onChange={(e) =>
                 setInput((prev) => ({ ...prev, location: e.target.value }))
               }
