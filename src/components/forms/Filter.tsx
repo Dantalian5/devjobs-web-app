@@ -13,9 +13,6 @@ function Filter() {
     event.preventDefault();
     updateFilter(input);
   }
-  function onCheck() {
-    setInput((prev) => ({ ...prev, time: !prev.time }));
-  }
 
   return (
     <form className='filter' onSubmit={onSubmit}>
@@ -63,22 +60,25 @@ function Filter() {
             />
           </div>
           <div className='extras-section__separator'></div>
-          <div className='input extras-section__full-time'>
+          <label
+            htmlFor='inputTime'
+            className='input extras-section__full-time f-h3'
+          >
             <input
               type='checkbox'
               id='inputTime'
               name='inputTime'
               className='input__checkbox'
               checked={input.time}
-              onChange={onCheck}
+              onChange={() =>
+                setInput((prev) => ({ ...prev, time: !prev.time }))
+              }
             />
-            <div className='input__check' onClick={onCheck}>
-              {svgCheck}
-            </div>
-            <label htmlFor='inputTime' className='input__label-check f-h3'>
+            <span className='input__check'>{svgCheck}</span>
+            <p className='checkbox-label__text'>
               Full Time <span> Only</span>
-            </label>
-          </div>
+            </p>
+          </label>
           <Button action={onSubmit} text='Search' type='cta' size='flex' />
         </div>
       </div>
