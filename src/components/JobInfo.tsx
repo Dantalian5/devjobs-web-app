@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import Button from '@/components/Button';
+import Button from '@/components/common/Button';
 import { svgDot } from '@/utils/SvgIcon';
 
 function JobInfo() {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Filter from '@/components/forms/Filter';
-import Button from '@/components/Button';
+import Button from '@/components/common/Button';
 import JobCard from '@/components/JobCard';
 import JobInfo from '@/components/JobInfo';
 import { fetchDatafromFirestore } from '@/utils/fetchData';
@@ -113,10 +113,10 @@ function Jobs() {
               )}
               <div className='l-jobs__load-more'>
                 <Button
-                  text={isLoading ? 'Loading...' : 'Load More'}
-                  action={loadMore}
-                  type='cta'
-                  size='static'
+                  innerText={isLoading ? 'Loading...' : 'Load More'}
+                  onClick={loadMore}
+                  colors='cta'
+                  size='lg'
                 />
               </div>
             </div>

@@ -24,7 +24,6 @@ export async function fetchDatafromFirestore() {
     res.forEach((doc) => {
       data.push(doc.data() as Job);
     });
-    console.log(data);
     return data;
   } catch (error) {
     console.error('Failed to fetch jobs:', error);

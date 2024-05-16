@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from '@/components/Button';
+import Button from '@/components/common/Button';
 import { useFilterStore } from '@/store/filter.store';
 import { svgCheck, svgSearch, svgLocation, svgFilter } from '@/utils/SvgIcon';
 import type { Filter } from '@/types/filter';
@@ -14,6 +14,7 @@ function Filter() {
       className='filter'
       onSubmit={(e) => {
         e.preventDefault();
+        setShowOverlay(false);
         updateFilter(input);
       }}
     >
@@ -94,6 +95,7 @@ function Filter() {
           onClick={() => setShowOverlay(true)}
           size='sm'
           colors='filter'
+          type='button'
         />
         <Button innerIcon={svgSearch} type='submit' size='sm' colors='search' />
       </div>

@@ -92,7 +92,8 @@
     padding: 1rem;
   }
   &__lg {
-    padding: 2rem;
+    padding-block: 1rem;
+    padding-inline: 2rem;
   }
   &__flexible {
     padding-block: 1rem;
