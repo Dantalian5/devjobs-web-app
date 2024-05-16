@@ -9,13 +9,14 @@ function Filter() {
   const [input, setInput] = useState<Filter>(filter);
   const [showOverlay, setShowOverlay] = useState<boolean>(false);
 
-  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    updateFilter(input);
-  }
-
   return (
-    <form className='filter' onSubmit={onSubmit}>
+    <form
+      className='filter'
+      onSubmit={(e) => {
+        e.preventDefault();
+        updateFilter(input);
+      }}
+    >
       <div className='filter__title-section'>
         <div className='input'>
           <div className='input__icon filter__search-icon'>{svgSearch}</div>
@@ -79,16 +80,22 @@ function Filter() {
               Full Time <span> Only</span>
             </p>
           </label>
-          <Button action={onSubmit} text='Search' type='cta' size='flex' />
+          <Button
+            innerText='Search'
+            type='submit'
+            size='flexible'
+            colors='cta'
+          />
         </div>
       </div>
       <div className='filter__btn-section'>
-        <button className='btn-filter' onClick={() => setShowOverlay(true)}>
-          {svgFilter}
-        </button>
-        <button className='btn-search' type='submit'>
-          {svgSearch}
-        </button>
+        <Button
+          innerIcon={svgFilter}
+          onClick={() => setShowOverlay(true)}
+          size='sm'
+          colors='filter'
+        />
+        <Button innerIcon={svgSearch} type='submit' size='sm' colors='search' />
       </div>
     </form>
   );

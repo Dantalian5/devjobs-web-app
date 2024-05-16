@@ -1,34 +1,21 @@
-interface Button {
-  action?: any;
-  text: string;
-  type: 'cta' | 'link';
-  size: 'small' | 'static' | 'flex';
-  linked?: boolean;
-  link?: string;
+interface CtaProps extends React.ComponentPropsWithoutRef<'button'> {
+  innerText?: string;
+  innerIcon?: React.ReactNode;
+  colors: 'cta' | 'link' | 'filter' | 'search';
+  size: 'sm' | 'base' | 'lg' | 'flexible';
 }
-function Button({
-  text = 'Button',
-  action,
-  type = 'cta',
-  size = 'static',
-  linked = false,
-  link = '',
-}: Button) {
-  const buttonClass = `f-h3 btn ${type} ${size}`;
 
+const Button = (props: CtaProps) => {
+  const { innerText, innerIcon, colors, size, className, ...rest } = props;
   return (
-    <>
-      {linked ? (
-        <a className={buttonClass} href={link} target='_blank'>
-          {text}
-        </a>
-      ) : (
-        <button className={buttonClass} onClick={action}>
-          {text}
-        </button>
-      )}
-    </>
+    <button
+      className={`btn btn__${colors} btn__${size} ${className || ''}`.trim()}
+      {...rest}
+    >
+      {innerIcon}
+      {innerText && <span className='f-h3'>{innerText}</span>}
+    </button>
   );
-}
+};
 
 export default Button;
