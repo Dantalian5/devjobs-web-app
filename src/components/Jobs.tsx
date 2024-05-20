@@ -6,12 +6,13 @@ import { useFilterStore } from '@/store/filter.store';
 import type { Job } from '@/types/jobs';
 import JobCard from '@/components/JobCard';
 import Button from '@/components/common/Button';
+import ErrorMsj from '@/components/ErrorMsj';
 
 const Jobs = () => {
   const { filter } = useFilterStore();
   const [loadNumber, setLoadNumber] = useState<number>(12);
 
-  const { isPending, isError, data, error } = useQuery({
+  const { isPending, isError, data } = useQuery({
     queryKey: ['jobs'],
     queryFn: fetchDatafromFirestore,
   });
@@ -19,7 +20,9 @@ const Jobs = () => {
   if (isPending) {
     return (
       <div className='l-jobs__list'>
-        <p>Loading...</p>
+        <div className='error-msj'>
+          <p className='f-h4'>Loading...</p>
+        </div>
         <div className='l-jobs__load-more'>
           <Button
             innerText={'Loading...'}
@@ -35,10 +38,7 @@ const Jobs = () => {
   if (isError) {
     return (
       <div className='l-jobs__list'>
-        <div className='error-msj'>
-          <p className='f-h4'>Error: {error.message}</p>
-          <p className='f-h4'>Please reload the page</p>
-        </div>
+        <ErrorMsj />
       </div>
     );
   }
