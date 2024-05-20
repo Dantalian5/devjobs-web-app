@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import Filter from '@/components/forms/Filter';
 import Button from '@/components/common/Button';
 import JobCard from '@/components/JobCard';
 import JobInfo from '@/components/JobInfo';
@@ -8,12 +7,10 @@ import { fetchDatafromFirestore } from '@/utils/fetchData';
 import { useFilterStore } from '@/store/filter.store';
 import type { Job } from '@/types/jobs';
 
+import Jobs1 from './Jobs1';
+
 type Status = { status: 'success' | 'error'; message: string };
-type FilterObj = {
-  title: string;
-  location: string;
-  time: boolean;
-};
+
 function Jobs() {
   const [jobs, setJobs] = useState<any>([]);
   const { filter } = useFilterStore();
@@ -98,12 +95,12 @@ function Jobs() {
 
   return (
     <main className='l-jobs'>
-      <Routes>
+      <Jobs1 />
+      {/* <Routes>
         <Route
           path='/'
           element={
             <div className='l-jobs__list'>
-              <Filter />
               {serverState.status === 'success' ? (
                 <div className='grid-jobs'>{jobList}</div>
               ) : (
@@ -123,7 +120,7 @@ function Jobs() {
           }
         />
         <Route path='/job/:id' element={<JobInfo />} />
-      </Routes>
+      </Routes> */}
     </main>
   );
 }

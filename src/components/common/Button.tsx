@@ -4,7 +4,6 @@ interface CtaProps extends React.ComponentPropsWithoutRef<'button'> {
   colors: 'cta' | 'link' | 'filter' | 'search';
   size: 'sm' | 'base' | 'lg' | 'flexible';
 }
-
 const Button = (props: CtaProps) => {
   const { innerText, innerIcon, colors, size, className, ...rest } = props;
   return (

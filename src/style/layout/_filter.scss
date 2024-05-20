@@ -1,4 +1,7 @@
 .filter {
+  &__wrapper {
+    padding-inline: var(--inner-padding);
+  }
   width: 100%;
   padding-inline: 1.5rem 1rem;
   padding-block: 1rem;
