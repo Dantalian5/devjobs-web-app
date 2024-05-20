@@ -1,128 +1,68 @@
-import { useState, useEffect } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
-import Button from '@/components/common/Button';
-import JobCard from '@/components/JobCard';
-import JobInfo from '@/components/JobInfo';
+import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { fetchDatafromFirestore } from '@/utils/fetchData';
+import { filterData } from '@/utils/filterData';
 import { useFilterStore } from '@/store/filter.store';
 import type { Job } from '@/types/jobs';
+import JobCard from '@/components/JobCard';
+import Button from '@/components/common/Button';
 
-import Jobs1 from './Jobs1';
-
-type Status = { status: 'success' | 'error'; message: string };
-
-function Jobs() {
-  const [jobs, setJobs] = useState<any>([]);
+const Jobs = () => {
   const { filter } = useFilterStore();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [serverState, setServerState] = useState<Status>({
-    status: 'success',
-    message: '',
+  const [loadNumber, setLoadNumber] = useState<number>(12);
+
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ['jobs'],
+    queryFn: fetchDatafromFirestore,
   });
-  const [contList, setContList] = useState<number>(12);
-  useEffect(() => {
-    async function getJobs() {
-      setIsLoading(true);
-      //const dataFromServer = await fetchData();
-      if (navigator.onLine) {
-        try {
-          const data = await fetchDatafromFirestore();
-          data &&
-            setJobs(data.map((item: Job) => ({ ...item, display: true })));
-          setServerState({ status: 'success', message: '' });
-        } catch (error) {
-          setServerState({
-            status: 'error',
-            message:
-              'Ups...there was an error, please, reload the page to try again',
-          });
-        }
-      } else {
-        setServerState({
-          status: 'error',
-          message: 'Ups...please check your internet :(',
-        });
-      }
-      setIsLoading(false);
-    }
-    getJobs();
-  }, []);
-  const { pathname } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  useEffect(() => {
-    let newJobsList = jobs.map((job: any) => {
-      let displayItem;
-      let isInTime;
-      if (filter.time) {
-        if ('full time' === job.contract.toLowerCase()) {
-          isInTime = true;
-        } else {
-          isInTime = false;
-        }
-      } else {
-        isInTime = true;
-      }
-      if (
-        job.position.toLowerCase().includes(filter.title.toLowerCase()) &&
-        job.location.toLowerCase().includes(filter.location.toLowerCase()) &&
-        isInTime
-      ) {
-        displayItem = true;
-      } else {
-        displayItem = false;
-      }
-
-      return { ...job, display: displayItem };
-    });
-    setJobs(newJobsList);
-  }, [filter]);
-
-  const jobList = jobs
-    .slice(0, contList)
-    .map((job: any) => job.display && <JobCard key={job.id} job={job} />);
-  // Load More
-  function loadMore() {
-    setIsLoading(true);
-    setTimeout(() => {
-      setContList((prev) => (prev < jobs.length ? prev + 12 : prev));
-      setIsLoading(false);
-    }, 1000);
+  if (isPending) {
+    return (
+      <div className='l-jobs__list'>
+        <p>Loading...</p>
+        <div className='l-jobs__load-more'>
+          <Button
+            innerText={'Loading...'}
+            onClick={() => {}}
+            colors='cta'
+            size='lg'
+          />
+        </div>
+      </div>
+    );
   }
 
-  return (
-    <main className='l-jobs'>
-      <Jobs1 />
-      {/* <Routes>
-        <Route
-          path='/'
-          element={
-            <div className='l-jobs__list'>
-              {serverState.status === 'success' ? (
-                <div className='grid-jobs'>{jobList}</div>
-              ) : (
-                <div className='error-msj'>
-                  <p className='f-h4'>{serverState.message}</p>
-                </div>
-              )}
-              <div className='l-jobs__load-more'>
-                <Button
-                  innerText={isLoading ? 'Loading...' : 'Load More'}
-                  onClick={loadMore}
-                  colors='cta'
-                  size='lg'
-                />
-              </div>
-            </div>
-          }
-        />
-        <Route path='/job/:id' element={<JobInfo />} />
-      </Routes> */}
-    </main>
-  );
-}
+  if (isError) {
+    return (
+      <div className='l-jobs__list'>
+        <div className='error-msj'>
+          <p className='f-h4'>Error: {error.message}</p>
+          <p className='f-h4'>Please reload the page</p>
+        </div>
+      </div>
+    );
+  }
 
+  // We can assume by this point that `isSuccess === true`
+  if (data) {
+    const jobs: Job[] = filterData(data, filter);
+
+    const jobList = jobs
+      .slice(0, loadNumber)
+      .map((job: Job) => <JobCard key={job.id} job={job} />);
+    return (
+      <div className='l-jobs__list'>
+        <div className='grid-jobs'>{jobList}</div>
+        <div className='l-jobs__load-more'>
+          <Button
+            innerText={'Load More'}
+            onClick={() => setLoadNumber((prev) => prev + 12)}
+            colors='cta'
+            size='lg'
+          />
+        </div>
+      </div>
+    );
+  }
+};
 export default Jobs;
