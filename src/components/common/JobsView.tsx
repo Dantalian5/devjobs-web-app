@@ -4,11 +4,11 @@ import { fetchDatafromFirestore } from '@/utils/fetchData';
 import { filterData } from '@/utils/filterData';
 import { useFilterStore } from '@/store/filter.store';
 import type { Job } from '@/types/jobs';
-import JobCard from '@/components/JobCard';
+import JobCard from '@/components/common/JobCard';
 import Button from '@/components/common/Button';
-import ErrorMsj from '@/components/ErrorMsj';
+import ErrorMsj from '@/components/common/ErrorMsj';
 
-const Jobs = () => {
+const JobsView = () => {
   const { filter } = useFilterStore();
   const [loadNumber, setLoadNumber] = useState<number>(12);
 
@@ -65,4 +65,4 @@ const Jobs = () => {
     );
   }
 };
-export default Jobs;
+export default JobsView;

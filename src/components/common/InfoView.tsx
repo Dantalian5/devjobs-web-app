@@ -1,8 +1,8 @@
 import { useLocation } from 'react-router-dom';
-import Button from '@/components/common/Button';
+import ButtonLink from '@/components/common/ButtonLink';
 import { svgDot } from '@/utils/SvgIcon';
 
-function JobInfo() {
+function InfoView() {
   let id: number = 1;
   const job = useLocation().state;
 
@@ -25,12 +25,11 @@ function JobInfo() {
               <h2 className='f-h2 card-job__title'>{job.company}</h2>
               <p className='f-body card-job__body'>{job.website}</p>
             </div>
-            <Button
-              text={'Company Site'}
-              type={'link'}
-              size={'static'}
-              linked={true}
-              link={job.website}
+            <ButtonLink
+              innerText={'Company Site'}
+              size={'lg'}
+              colors='link'
+              href={job.website}
             />
           </div>
         </div>
@@ -47,13 +46,11 @@ function JobInfo() {
                 {job.location}
               </h4>
             </div>
-
-            <Button
-              text='Apply Now'
-              size='flex'
-              type='cta'
-              linked={true}
-              link={job.apply}
+            <ButtonLink
+              innerText='Apply Now'
+              size='flexible'
+              colors='cta'
+              href={job.apply}
             />
           </div>
 
@@ -90,12 +87,11 @@ function JobInfo() {
             <h2 className='f-h2 l-jobs__footer__title'>{job.position}</h2>
             <p className='f-body l-jobs__footer__subtitle'>{job.company}</p>
           </div>
-          <Button
-            text='Apply Now'
-            size='flex'
-            type='cta'
-            linked={true}
-            link={job.apply}
+          <ButtonLink
+            innerText='Apply Now'
+            size='flexible'
+            colors='cta'
+            href={job.apply}
           />
         </div>
       </div>
@@ -103,4 +99,4 @@ function JobInfo() {
   );
 }
 
-export default JobInfo;
+export default InfoView;

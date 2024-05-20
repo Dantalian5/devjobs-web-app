@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-function JobCard({ job }: any) {
+import type { Job } from '@/types/jobs';
+
+function JobCard({ job }: { job: Job }) {
   return (
-    <Link to={`/job/${job.position}`} state={job}>
+    <Link to={`/jobs/${job.position}`} state={job}>
       <div className='card-job' style={{ cursor: 'pointer' }}>
         <div
           className='card-job__logo'

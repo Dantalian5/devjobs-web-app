@@ -1,11 +1,12 @@
 import Header from '@/components/layout/Header';
-import JobInfo from '@/components/Jobs';
+import InfoView from '@/components/common/InfoView';
 
 const Info = () => {
+  console.log('Info');
   return (
     <div>
       <Header />
-      <JobInfo />
+      <InfoView />
     </div>
   );
 };
