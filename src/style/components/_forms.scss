@@ -6,9 +6,12 @@
   gap: 1rem;
   color: var(--c-primary);
   position: relative;
+  &__icon {
+    color: var(--c-accent);
+  }
   &__input {
     flex: 1 1 auto;
-    position: relative;
+    padding: 1rem 0;
     z-index: 2;
     width: 100%;
     background: none;
@@ -30,21 +33,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    & > .svg-icon {
-      visibility: hidden;
-    }
   }
   &__checkbox {
-    visibility: hidden;
     position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
     &:checked {
       & ~ .input__check {
         background-color: var(--c-accent);
         opacity: 1;
-        & > .svg-icon {
-          visibility: visible;
-        }
       }
+    }
+    &:focus + .input__check {
+      outline: 2px solid var(--c-accent);
     }
   }
 }

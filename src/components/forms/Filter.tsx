@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import Button from '@/components/common/Button';
+import Input from '@/components/forms/Input';
+import CheckBox from '@/components/forms/CheckBox';
 import { useFilterStore } from '@/store/filter.store';
-import { svgCheck, svgSearch, svgLocation, svgFilter } from '@/utils/SvgIcon';
+import { svgSearch, svgLocation, svgFilter } from '@/utils/SvgIcon';
 import type { Filter } from '@/types/filter';
 
-function Filter() {
+const Filter = () => {
   const { filter, updateFilter } = useFilterStore();
   const [input, setInput] = useState<Filter>(filter);
   const [showOverlay, setShowOverlay] = useState<boolean>(false);
@@ -20,20 +22,18 @@ function Filter() {
         }}
       >
         <div className='filter__title-section'>
-          <div className='input'>
-            <div className='input__icon filter__search-icon'>{svgSearch}</div>
-            <input
-              className='input__input f-body'
-              id='finderInput'
-              type='text'
-              value={input.title}
-              onChange={(e) =>
-                setInput((prev) => ({ ...prev, title: e.target.value }))
-              }
-              aria-label='Filter by title'
-              placeholder='Filter by title...'
-            />
-          </div>
+          <Input
+            icon={svgSearch}
+            iconSize='1.5rem'
+            iconClass='hidden-on-mobile'
+            id='finderInput'
+            value={input.title}
+            onChange={(e) =>
+              setInput((prev) => ({ ...prev, title: e.target.value }))
+            }
+            aria-label='Filter by title'
+            placeholder='Filter by title...'
+          />
         </div>
         <div
           className={`filter__extras-section ${showOverlay && 'overlay-active'}`}
@@ -48,40 +48,31 @@ function Filter() {
             }}
           >
             <div className='extras-section__separator inner-sep'></div>
-            <div className='input extras-section__location'>
-              <div className='input__icon'>{svgLocation}</div>
-              <input
-                className='input__input f-body'
-                id='finderInputLocation'
-                type='text'
-                value={input.location}
-                onChange={(e) =>
-                  setInput((prev) => ({ ...prev, location: e.target.value }))
-                }
-                aria-label='Filter by location'
-                placeholder='Filter by location...'
-              />
-            </div>
+            <Input
+              icon={svgLocation}
+              iconSize='1rem'
+              iconClass='hidden-on-mobile'
+              className='extras-section__location'
+              id='finderInputLocation'
+              type='text'
+              value={input.location}
+              onChange={(e) =>
+                setInput((prev) => ({ ...prev, location: e.target.value }))
+              }
+              aria-label='Filter by location'
+              placeholder='Filter by location...'
+            />
             <div className='extras-section__separator'></div>
-            <label
-              htmlFor='inputTime'
-              className='input extras-section__full-time f-h3'
-            >
-              <input
-                type='checkbox'
-                id='inputTime'
-                name='inputTime'
-                className='input__checkbox'
-                checked={input.time}
-                onChange={() =>
-                  setInput((prev) => ({ ...prev, time: !prev.time }))
-                }
-              />
-              <span className='input__check'>{svgCheck}</span>
-              <p className='checkbox-label__text'>
-                Full Time <span> Only</span>
-              </p>
-            </label>
+            <CheckBox
+              label1='Full Time'
+              label2='Only'
+              className='extras-section__full-time'
+              isChecked={input.time}
+              id='inputTime'
+              onChange={() =>
+                setInput((prev) => ({ ...prev, time: !prev.time }))
+              }
+            />
             <Button
               innerText='Search'
               type='submit'
@@ -108,6 +99,6 @@ function Filter() {
       </form>
     </div>
   );
-}
+};
 
 export default Filter;
