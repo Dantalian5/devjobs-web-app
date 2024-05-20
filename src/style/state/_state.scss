@@ -79,7 +79,7 @@
       display: none;
     }
   }
-  .input__label-check > span {
+  .checkbox-label__text > span {
     display: none;
   }
   .extras-section {
@@ -117,10 +117,13 @@
       max-width: 40.625rem;
     }
   }
-  .input__label-check > span {
+  .checkbox-label__text > span {
     display: inline;
   }
   .btn.flex {
     padding-inline: 2rem;
+  }
+  .extras-section {
+    column-gap: 2rem;
   }
 }
