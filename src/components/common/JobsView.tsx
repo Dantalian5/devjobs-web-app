@@ -6,7 +6,7 @@ import { useFilterStore } from '@/store/filter.store';
 import type { Job } from '@/types/jobs';
 import JobCard from '@/components/common/JobCard';
 import Button from '@/components/common/Button';
-import ErrorMsj from '@/components/common/ErrorMsj';
+import ErrorMsj from '@/components/error/ErrorMsj';
 
 const JobsView = () => {
   const { filter } = useFilterStore();
