@@ -7,7 +7,7 @@ interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
 const Input = (props: InputProps) => {
   const { icon, iconSize, iconClass, className, ...rest } = props;
   return (
-    <div className={`input ${className || ''}`.trim()}>
+    <div className={`input ${className || ''}`.trim()} role='search'>
       {icon && (
         <div
           className={`input__icon ${iconClass || ''}`.trim()}

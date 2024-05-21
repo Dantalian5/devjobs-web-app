@@ -7,20 +7,22 @@ interface CheckboxProps extends React.ComponentPropsWithoutRef<'input'> {
 const CheckBox = (props: CheckboxProps) => {
   const { label1, label2, className, isChecked, ...rest } = props;
   return (
-    <label className={`input ${className || ''}`.trim()}>
-      <input
-        type='checkbox'
-        name='checkbox'
-        className='input__checkbox'
-        checked={isChecked}
-        aria-checked={isChecked}
-        {...rest}
-      />
-      <span className='input__check f-body'>{isChecked && svgCheck}</span>
-      <p className='checkbox-label__text f-h3'>
-        {label1} <span> {label2}</span>
-      </p>
-    </label>
+    <div className={className} role='search'>
+      <label className='input'>
+        <input
+          type='checkbox'
+          name='checkbox'
+          className='input__checkbox'
+          checked={isChecked}
+          aria-checked={isChecked}
+          {...rest}
+        />
+        <span className='input__check f-body'>{isChecked && svgCheck}</span>
+        <span className='checkbox-label__text f-h3'>
+          {label1} <span> {label2}</span>
+        </span>
+      </label>
+    </div>
   );
 };
 

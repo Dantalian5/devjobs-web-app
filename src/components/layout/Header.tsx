@@ -7,9 +7,7 @@ function Header() {
   return (
     <header className='header header--bkg'>
       <Link to='/' aria-label='Dashboard'>
-        <h1 className='main-logo' aria-label='DevJobs'>
-          {svgLogo}
-        </h1>
+        <div className='main-logo'>{svgLogo}</div>
       </Link>
       <div className='theme-toggler'>
         <img
