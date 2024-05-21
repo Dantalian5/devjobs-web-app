@@ -6,8 +6,10 @@ function Header() {
   const { colorScheme, toggleColorScheme } = useColorSchemeStore();
   return (
     <header className='header header--bkg'>
-      <Link to='/'>
-        <div className='main-logo'>{svgLogo}</div>
+      <Link to='/' aria-label='Dashboard'>
+        <h1 className='main-logo' aria-label='DevJobs'>
+          {svgLogo}
+        </h1>
       </Link>
       <div className='theme-toggler'>
         <img

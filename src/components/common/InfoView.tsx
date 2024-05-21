@@ -41,10 +41,8 @@ function InfoView() {
                 <span className='card-job__point'>{svgDot}</span>
                 {job.contract}
               </p>
-              <h2 className='f-h2 card-info__header-title'>{job.position}</h2>
-              <h4 className='f-h4 card-info__header-location'>
-                {job.location}
-              </h4>
+              <h3 className='f-h2 card-info__header-title'>{job.position}</h3>
+              <p className='f-h4 card-info__header-location'>{job.location}</p>
             </div>
             <ButtonLink
               innerText='Apply Now'
@@ -56,7 +54,7 @@ function InfoView() {
 
           <div className='card-info__wrapper'>
             <p className='f-body card-info__wrapper-body'>{job.description}</p>
-            <h2 className='f-h2 card-info__wrapper-title'>Requirements</h2>
+            <h4 className='f-h2 card-info__wrapper-title'>Requirements</h4>
             <p className='f-body card-info__wrapper-body'>
               {job.requirements.content}
             </p>
@@ -67,7 +65,7 @@ function InfoView() {
                 </li>
               ))}
             </ul>
-            <h2 className='f-h2 card-info__wrapper-title'>What You Will Do</h2>
+            <h4 className='f-h2 card-info__wrapper-title'>What You Will Do</h4>
             <p className='f-body card-info__wrapper-body '>
               {job.role.content}
             </p>
@@ -84,7 +82,7 @@ function InfoView() {
       <div className='l-jobs__footer'>
         <div className='l-jobs__footer__wrapper'>
           <div className='l-jobs__footer__info'>
-            <h2 className='f-h2 l-jobs__footer__title'>{job.position}</h2>
+            <h3 className='f-h2 l-jobs__footer__title'>{job.position}</h3>
             <p className='f-body l-jobs__footer__subtitle'>{job.company}</p>
           </div>
           <ButtonLink
