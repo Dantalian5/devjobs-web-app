@@ -5,7 +5,9 @@ const Info = () => {
   return (
     <div>
       <Header />
-      <InfoView />
+      <main className='l-jobs'>
+        <InfoView />
+      </main>
     </div>
   );
 };

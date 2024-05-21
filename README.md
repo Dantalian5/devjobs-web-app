@@ -86,6 +86,9 @@ This is a solution to the [Devjobs web app challenge on Frontend Mentor](https:/
 - CSS / SCSS
 - Javascript / Typescript
 - [React](https://reactjs.org/) - JS library
+- React Router
+- React Query
+- Zustand
 - Vite (bundler)
 - Firestore
 
@@ -189,6 +192,7 @@ Project Link: [https://github.com/Dantalian5/devjobs-web-app](https://github.com
 ## Acknowledgments
 
 - [FrontendMentor](www.frontendmentor.io)
+- [Bruno Moleta](https://github.com/brunomoleta) -- Thank you for all your wonderful contributions :) .
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

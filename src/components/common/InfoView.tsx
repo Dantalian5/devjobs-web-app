@@ -7,7 +7,7 @@ function InfoView() {
   const job = useLocation().state;
 
   return (
-    <main className='l-jobs'>
+    <>
       <section className='l-jobs__info'>
         <div className='card-info-job'>
           <div
@@ -95,7 +95,7 @@ function InfoView() {
           />
         </div>
       </div>
-    </main>
+    </>
   );
 }
 
