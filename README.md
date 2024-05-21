@@ -76,20 +76,32 @@
 
 [![Product Name Screen Shot][product-screenshot]](images/screenshot.png)
 
+The project involves a Single Page Application (SPA) featuring an interactive dashboard where users can view a series of job offers displayed on cards. Each card provides basic information about the job and serves as a link to comprehensive details about the job offer, including specific details and application procedures. The job information is stored and managed using Firestore. Additionally, the website allows users to choose between two visual themes: a dark theme and a light theme. Special attention has been given to ensure that the website is fully responsive and accessible, ensuring an optimal user experience across devices of varying sizes and for people with different accessibility needs.
 This is a solution to the [Devjobs web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/devjobs-web-app-HuvC_LP4l). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
+**Code:**
+
 - HTML5 Markdown
 - CSS / SCSS
 - Javascript / Typescript
+
+**Framework:**
+
 - [React](https://reactjs.org/) - JS library
+- Vite (bundler)
+
+**Libraries:**
+
 - React Router
 - React Query
 - Zustand
-- Vite (bundler)
+
+**Database:**
+
 - Firestore
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -141,8 +153,12 @@ This is a solution to the [Devjobs web app challenge on Frontend Mentor](https:/
 - [x] See hover states for all interactive elements throughout the site
 - [x] Be able to filter jobs on the index page by title, location, and whether a job is for a full-time position
 - [x] Be able to click a job from the index page so that they can read more information and apply for the job
-- [x] **Bonus**: Have the correct color scheme chosen for them based on their computer preferences. _Hint_: Research `prefers-color-scheme` in CSS.
+- [x] **Bonus**: Have the correct color scheme chosen for them based on their computer preferences.
 - [x] Personal **bonus**: add firestore backend **db**.
+
+**For Version 2.0:**
+
+- [ ] Personal **bonus**: add a RESTfull **api** and **db** using node and mongodb as backend.
 
 See the [open issues](https://github.com/Dantalian5/devjobs-web-app/issues) for a full list of proposed features (and known issues).
 
