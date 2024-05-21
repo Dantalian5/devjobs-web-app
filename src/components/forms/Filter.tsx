@@ -14,6 +14,7 @@ const Filter = () => {
   return (
     <div className='filter__wrapper'>
       <form
+        role='search'
         className='filter'
         onSubmit={(e) => {
           e.preventDefault();
@@ -37,6 +38,7 @@ const Filter = () => {
         </div>
         <div
           className={`filter__extras-section ${showOverlay && 'overlay-active'}`}
+          aria-expanded={showOverlay}
           onClick={() => {
             setShowOverlay(false);
           }}
