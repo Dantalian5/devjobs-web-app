@@ -38,7 +38,6 @@ const Filter = () => {
         </div>
         <div
           className={`filter__extras-section ${showOverlay && 'overlay-active'}`}
-          aria-expanded={showOverlay}
           onClick={() => {
             setShowOverlay(false);
           }}
